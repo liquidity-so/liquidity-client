@@ -1,6 +1,9 @@
 import React from 'react';
 
-export default function PromoCardHorizontal() {
+
+// This is a temporary component until we can sort through webflow's css
+// Ideally we pass the left or right design as a prop.
+export default function PromoCardHorizontalRight() {
     return (
         <div class="home-white-card w-container">
         <div class="home_card">
