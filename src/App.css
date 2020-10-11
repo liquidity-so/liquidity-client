@@ -3456,6 +3456,7 @@ body {
   color: #737373;
   font-size: 14px;
   font-weight: 400;
+  width: 100%;
 }
 
 .email-input-field-sign-up-sign-in:hover {
@@ -5774,6 +5775,7 @@ body {
   .sign-up-in-container {
     width: 90%;
   }
+
   .div-block-53 {
     width: 100%;
     max-width: 285px;
