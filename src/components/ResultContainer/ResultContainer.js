@@ -16,10 +16,46 @@ export default function ResultContainer(props) {
             />
         )
     })
-    // WHAT IS THE SIDEBAR CARD LEFT HIDE??? ASK ALFONSO
+
+    const loggedIn = props.loggedIn ? true: false;
+    let signUpBanner;
+
+    if (loggedIn) {
+        signUpBanner = null
+    }
+    else {
+        signUpBanner =  
+        <div class="div-block-122">
+            <div class="text-block-81">
+                Sign up to uncover the exchanges, 
+                get the full results, 
+                get link to exchanges and more. Get <strong>50 free searches/month</strong>.
+                <a href="../sign-up.html" class="link-6">Create a free account</a>
+            </div>
+        </div>    
+    }
+  
+
+    // TODO WHAT IS THE SIDEBAR CARD LEFT HIDE??? ASK ALFONSO
     return (
         <>
- 
+        <div class="sidebar-card left hide">
+              <div class="w-layout-grid sidebar-grid">
+                  <div class="title">Pair</div>
+                  <div class="title data">BAT/BTC</div>
+                  <div class="title something-good">Price</div>
+                  <div class="title data">$0.1655</div>
+                  <div class="title">Change</div>
+                  <div class="title price transparent">+5.32</div>
+                  <div class="title">Type</div>
+                  <div class="title data">Buy</div>
+                  <div class="title">Size</div>
+                  <div id="w-node-b029be24681b-2dc2b4ba" class="title data">100,000</div>
+                  <div class="title">Time</div>
+                  <div id="w-node-2ed8036e9013-2dc2b4ba" class="title data">01:33:21</div>
+              </div>
+          </div>
+          <div class="search_results_container">
           <div class="div-block-112 title">
             <div class="w-layout-grid search-results_row title">
               <div class="div-block-109">
@@ -40,6 +76,8 @@ export default function ResultContainer(props) {
             </div>
           </div>
           {results}
+          {signUpBanner}
+          </div>
         </>
     )
 }
