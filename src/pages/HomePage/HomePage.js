@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar'
+import SearchWidget from '../../components/SearchWidget/SearchWidget'
 
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
@@ -17,7 +17,7 @@ export default function HomePage() {
             <img src="images/sineWave-1.png" loading="lazy" width="48" alt="" class="sine-wave"/>
         <h1 class="heading_h1 home">Find the best price</h1>
         <p class="paragraph_home">Simulate your order across 50+ exchanges.</p>
-        <SearchBar/>
+        <SearchWidget/>
         </div>
         <div class="home_exchange_block">
         <h5 class="heading_h5 center">Supported Exchanges</h5>

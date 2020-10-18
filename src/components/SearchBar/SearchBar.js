@@ -92,65 +92,86 @@ export default class SearchBar extends Component{
     })
     console.log(this.state.validQuery)
   }
+
+  handleSubmitLiquidityQuery = async (pair1, pair2, size, type) => {
+    // Replace with auth context token
+    const token = null
+    const results = await this.LiquidityApi.getExchangeData(pair1, pair2, size, type, token)
+    this.props.onSearchFinished(results)
+  }
+
+
+
+
   render() {
       return (
-        <div class="search-bar home">
-          <div class="accorion-wrappa">
-            <input 
-              type="text" 
-              name="pair-0" 
-              class="search-box-input-field" 
-              placeholder="Crypto Pair 1" 
-              onChange={(input) => this.handleUserSearch(input.target.value, 0)} 
-              ref={this.pair0}
-              value={this.state.currentInput0}
-            />
-            {
-              this.state.currentInput0.length && 
-              this.pair0.current === document.activeElement ? 
+        <>
+          <div class="search-bar home">
+            <div class="accorion-wrappa">
+              <input 
+                type="text" 
+                name="pair-0" 
+                class="search-box-input-field" 
+                placeholder="Crypto Pair 1" 
+                onChange={(input) => this.handleUserSearch(input.target.value, 0)} 
+                ref={this.pair0}
+                value={this.state.currentInput0}
+              />
+              {
+                this.state.currentInput0.length && 
+                this.pair0.current === document.activeElement ? 
+                  <AccordionSearchList 
+                    matchData={[]} 
+                    currentInput={this.state.currentInput0}
+                    inputIndex={0}
+                    onUserSelect={this.setSelectedPair}
+                  />  
+                  : null 
+              }
+            </div>
+            <div class="accorion-wrappa">
+              <input 
+                type="text" 
+                name="pair-1"  
+                class="search-box-input-field" 
+                placeholder="Crypto Pair 2" 
+                onChange={(input) => this.handleUserSearch(input.target.value, 1)} 
+                ref={this.pair1}
+                value={this.state.currentInput1}
+              />
+              {
+                this.state.currentInput1.length && 
+                this.pair1.current === document.activeElement ?  
                 <AccordionSearchList 
-                  matchData={[]} 
-                  currentInput={this.state.currentInput0}
-                  inputIndex={0}
+                  matchData={this.state.matchData1} 
+                  currentInput={this.state.currentInput1}
+                  inputIndex={1}
                   onUserSelect={this.setSelectedPair}
                 />  
-                : null 
-            }
-          </div>
-          <div class="accorion-wrappa">
+                : null  
+              }
+            </div>
             <input 
               type="text" 
-              name="pair-1"  
               class="search-box-input-field" 
-              placeholder="Crypto Pair 2" 
-              onChange={(input) => this.handleUserSearch(input.target.value, 1)} 
-              ref={this.pair1}
-              value={this.state.currentInput1}
+              placeholder="Order Size" 
+              name="order-size" 
+              onChange={(e) => this.setOrderSize(e.target.value)}
             />
-            {
-              this.state.currentInput1.length && 
-              this.pair1.current === document.activeElement ?  
-              <AccordionSearchList 
-                matchData={this.state.matchData1} 
-                currentInput={this.state.currentInput1}
-                inputIndex={1}
-                onUserSelect={this.setSelectedPair}
-              />  
-              : null  
-            }
+            <div class="div-block-138">
+              <button 
+                onClick={() => this.handleSubmitLiquidityQuery()} 
+                disabled={!!!this.state.validQuery} 
+                className="search-box-button w-button">
+                  Buy</button>
+              <button 
+                onClick={() => this.handleSubmitLiquidityQuery()} 
+                disabled={!!!this.state.validQuery} 
+                className="search-box-button sell w-button">
+                  Sell</button>
+            </div>
           </div>
-          <input 
-            type="text" 
-            class="search-box-input-field" 
-            placeholder="Order Size" 
-            name="order-size" 
-            onChange={(e) => this.setOrderSize(e.target.value)}
-          />
-          <div class="div-block-138">
-            <button disabled={!!!this.state.validQuery} class="search-box-button w-button">Buy</button>
-            <button disabled={!!!this.state.validQuery} class="search-box-button sell w-button">Sell</button>
-          </div>
-        </div>
+        </>
       )
   }
 }

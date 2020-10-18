@@ -4,6 +4,9 @@ import HomePage from './pages/HomePage/HomePage';
 import './App.css';
 import LoginPage from './pages/LoginPage/LoginPage';
 import PricingPage from './pages/PricingPage/PricingPage';
+import PrivateRoute from "./utils/PrivateRoute";
+import PublicOnlyRoute from "./utils/PublicOnlyRoute";
+import DashboardPage from './pages/DashboardPage/DashboardPage';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
       <Route 
         path={"/pricing"}
         render={() => <PricingPage/>}></Route>
+      <Route 
+        path={"/dashboard"}
+        render={() => <DashboardPage/>}></Route>
     </div>
   );
 }
