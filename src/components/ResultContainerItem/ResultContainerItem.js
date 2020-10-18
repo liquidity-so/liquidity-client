@@ -1,6 +1,6 @@
 import React from 'react';
 import './ResultContainerItem.css'
-import CurrencyHelpers from '../../utils/Currency'
+import Normalize from '../../utils/Normalize'
 
 export default function ResultContainerItem(props) {
     return (
@@ -14,13 +14,13 @@ export default function ResultContainerItem(props) {
                 <div class="results_text">{props.pi}</div>
               </div>
               <div class="div-block-110 hide-on-mobile">
-                <div class="results_text">{CurrencyHelpers.normalizeDollarAmount(props.cost)}</div>
+                <div class="results_text">{Normalize.normalizeDollarAmount(props.cost)}</div>
               </div>
               <div class="div-block-110">
-                <div class="results_text">{CurrencyHelpers.normalizeDollarAmount(props.wap)}</div>
+                <div class="results_text">{Normalize.normalizeDollarAmount(props.wap)}</div>
               </div>
               <div class="div-block-110 keep">
-                <div class="results_text">{CurrencyHelpers.normalizeDollarAmount(props.total)}</div>
+                <div class="results_text">{Normalize.normalizeDollarAmount(props.total)}</div>
               </div>
             </div>
         </a>

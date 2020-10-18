@@ -1,4 +1,4 @@
-const CurrencyHelpers = {
+const Normalize = {
     normalizeDollarAmount(value) {
         if (parseFloat(value)) {
             const floatVal = parseFloat(value)
@@ -9,7 +9,16 @@ const CurrencyHelpers = {
         else {
             return null
         }
+    },
+    normalizePercentChange(value) {
+        if (parseFloat(value)) {
+            const floatVal = parseFloat(value)
+            return floatVal < 0 ? `-${value}%` : floatVal > 0 ? `+${value}%` : `${value}`
+        }
+        else {
+            return null
+        }
     }
 }
 
-export default CurrencyHelpers
+export default Normalize

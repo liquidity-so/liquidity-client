@@ -14,10 +14,7 @@ export default function HomePage() {
     <NavBar/>
     <div class="home_section">
         <div class="container_home w-container">
-            <img src="images/sineWave-1.png" loading="lazy" width="48" alt="" class="sine-wave"/>
-        <h1 class="heading_h1 home">Find the best price</h1>
-        <p class="paragraph_home">Simulate your order across 50+ exchanges.</p>
-        <SearchWidget/>
+        <SearchWidget homepage={true}/>
         </div>
         <div class="home_exchange_block">
         <h5 class="heading_h5 center">Supported Exchanges</h5>

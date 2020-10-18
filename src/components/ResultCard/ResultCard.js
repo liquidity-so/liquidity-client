@@ -1,5 +1,5 @@
 import React from 'react';
-import CurrencyHelpers from '../../utils/Currency';
+import Normalize from '../../utils/Normalize';
 
 export default function ResultCard(props) {
     return (
@@ -8,9 +8,9 @@ export default function ResultCard(props) {
             <div class="title main">Pair</div>
             <div class="title data">{props.data.pair1}/{props.data.pair2}</div>
             <div class="title main">Price</div>
-            <div class="title data">{CurrencyHelpers.normalizeDollarAmount(props.data.price)}</div>
+            <div class="title data">{Normalize.normalizeDollarAmount(props.data.price)}</div>
             <div class="title main">Change</div>
-            <div class="title price">{props.data.change}</div>
+            <div class="title price">{Normalize.normalizePercentChange(props.data.change)}</div>
             <div class="title main">Type</div>
             <div class="title data type">{props.data.type}</div>
             <div class="title main">Size</div>

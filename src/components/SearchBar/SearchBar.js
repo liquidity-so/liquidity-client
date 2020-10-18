@@ -106,7 +106,7 @@ export default class SearchBar extends Component{
   render() {
       return (
         <>
-          <div class="search-bar home">
+          <div class={`search-bar ${this.props.homepage? "home" : ""}`}>
             <div class="accorion-wrappa">
               <input 
                 type="text" 
