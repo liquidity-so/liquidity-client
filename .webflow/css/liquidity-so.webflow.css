@@ -17,7 +17,6 @@ body {
   color: #141414;
   font-size: 17px;
   line-height: 160%;
-  border: 1px solid red;
 }
 
 .styles-container {
@@ -694,7 +693,6 @@ body {
 }
 
 .container_home {
-  outline: 1px solid red;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3824,7 +3822,6 @@ body {
     max-height: none;
   }
   .home_section {
-
     margin-top: 0px;
   }
   .container_home {

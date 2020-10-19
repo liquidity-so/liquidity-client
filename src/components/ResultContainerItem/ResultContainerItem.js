@@ -2,6 +2,7 @@ import React from 'react';
 import './ResultContainerItem.css'
 import Normalize from '../../utils/Normalize'
 
+
 export default function ResultContainerItem(props) {
     return (
         <a href={props.url} target="_blank" class="div-block-112 w-inline-block">
