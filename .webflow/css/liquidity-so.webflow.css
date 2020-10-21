@@ -2317,6 +2317,7 @@ body {
 
 .search-bar-section {
   width: 100vw;
+  position: relative;
   outline: 1px solid violet;
   display: -webkit-box;
   display: -webkit-flex;

@@ -1,6 +1,8 @@
 import React, {Component, createRef} from 'react';
 import AccordionSearchList from '../AccordionSearchList/AccordionSearchList';
 import LiquidityService from '../../services/liquidity.service';
+import TokenAutocomplete from '../../utils/TokenAutocomplete';
+
 import "./SearchBar.css"
 
 export default class SearchBar extends Component{
@@ -40,7 +42,10 @@ export default class SearchBar extends Component{
       this.setCurrentInput("", pairIndex)
       return 
     }
-    const matchData = await this.LiquidityApi.findClosestMatches(input);
+    // TODO: Unusued for now. Requires Autosuggest API endpoint
+    //const matchData = await this.LiquidityApi.findClosestMatches(input);
+    
+    const matchData = await TokenAutocomplete(input)
     this.setMatches(matchData, target)
  
     return
@@ -116,12 +121,13 @@ export default class SearchBar extends Component{
                 onChange={(input) => this.handleUserSearch(input.target.value, 0)} 
                 ref={this.pair0}
                 value={this.state.currentInput0}
+                autocomplete="off"
               />
               {
                 this.state.currentInput0.length && 
                 this.pair0.current === document.activeElement ? 
                   <AccordionSearchList 
-                    matchData={[]} 
+                    matchData={this.state.matchData0} 
                     currentInput={this.state.currentInput0}
                     inputIndex={0}
                     onUserSelect={this.setSelectedPair}
@@ -138,6 +144,7 @@ export default class SearchBar extends Component{
                 onChange={(input) => this.handleUserSearch(input.target.value, 1)} 
                 ref={this.pair1}
                 value={this.state.currentInput1}
+                autocomplete="off"
               />
               {
                 this.state.currentInput1.length && 
@@ -157,6 +164,7 @@ export default class SearchBar extends Component{
               placeholder="Order Size" 
               name="order-size" 
               onChange={(e) => this.setOrderSize(e.target.value)}
+              
             />
             <div class="div-block-138">
               <button 
