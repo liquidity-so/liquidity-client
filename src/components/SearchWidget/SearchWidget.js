@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import ResultCard from '../ResultCard/ResultCard';
 import ResultContainer from '../ResultContainer/ResultContainer';
+import LoadingBar from '../LoadingBar/LoadingBar';
 import SearchBar from '../SearchBar/SearchBar';
 import Skeleton from 'react-loading-skeleton';
-import BeatLoader from "react-spinners/BeatLoader";
 import './SearchWidget.css'
 
 
@@ -14,14 +14,16 @@ export default class SearchWidget extends Component {
             results: null,
             overview: null,
             loading: true,
-            loggedIn: false
+            loggedIn: false,
+            progress: 0,
+            status: "",
         }
     }
-   
     setResultsData = (resultsData) => {
         console.log(resultsData)
         const results = resultsData.results
         const summary = resultsData.summary
+        // Set finished status first, then show results
         this.setState({
             ...this.state,
             results: results,
@@ -29,6 +31,15 @@ export default class SearchWidget extends Component {
             loading: false
         })
     }
+    createLoadingEffect = () => {
+        // random number increment
+        // will never reach 100
+    }
+    setFinishedStatus = () => {
+        // activate after results are ready, right before setting results data.
+        // add a slight delay
+    }
+
     componentDidMount() {
         // TODO: Check login status. Replace with context
     }
@@ -65,13 +76,7 @@ export default class SearchWidget extends Component {
                             :  
                             this.state.loading ? 
                             <>
-                            <div class="loading-indicator">
-                            <BeatLoader
-                                size={10}
-                                //width={"100%"}
-                                color={"#e6e6e6"}
-                            />
-                            </div>
+                            <LoadingBar progress={25} status={"Consolidating exchanges..."}/>
                             <Skeleton className="sw-skeleton">
                             </Skeleton> 
                             </>

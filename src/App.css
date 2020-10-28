@@ -693,7 +693,6 @@ body {
 }
 
 .container_home {
-  outline: 1px solid green;
   margin: 5% auto 3% auto;
   height: auto !important;
   width: auto;
@@ -717,7 +716,6 @@ body {
 }
 
 .home_exchange_block {
-  outline: 1px solid blue;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2320,7 +2318,6 @@ body {
 
 .search-bar-section {
   top: 0;
-  outline: 1px solid blue;
   width: 100vw;
   display: -webkit-box;
   display: -webkit-flex;

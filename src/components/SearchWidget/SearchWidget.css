@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    outline: 1px solid red;
     position: relative !important; 
 }
 
@@ -11,7 +10,6 @@
     margin-top: 2em;
 }
 .sw-container {
-    outline: 1px solid blue;
     min-width: auto;
 }
 
@@ -31,6 +29,3 @@
 .loading-wrapper {
     min-width: 100%;
 }
-/*
-style={{"min-height": "320px", "border-radius": "20px", "margin" : "0 1em"}}
-*/
