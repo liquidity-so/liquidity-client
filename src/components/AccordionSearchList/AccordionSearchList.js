@@ -1,30 +1,52 @@
 import React from 'react';
+import './AccordionSearchList.css'
 
-export default function AccordionSearchList() {
+export default function AccordionSearchList(props) {
+  let rows;
+  if (props.matchData.length) {
+    rows = props.matchData.map(match => {
+        // TODO: UNUSED FOR NOW
+        // Requires Autosuggest endpoint
+        /* if (match.name.length > 7) {
+          match.name = `${match.name.slice(0, 7)}...`
+        }
+        TODO: change match.item to match.ticker
+        */
+        const highlightIndex = match.item.indexOf(props.currentInput.toUpperCase())
+        let matchedText = match.item
+        if (highlightIndex >= 0) {
+          // If input matches part of symbol, wrap in span
+          matchedText = 
+            [match.item.substring(0, highlightIndex),
+              <span class="found-match">
+                {match.item.substring(highlightIndex, highlightIndex + props.currentInput.length)}
+              </span>,
+            match.item.substring(highlightIndex + props.currentInput.length)]
+        }
+        return (
+            <div class="auto-complete-row" onClick={() => {props.onUserSelect(match.item, props.inputIndex)}}>
+                <div class="auto-complete-ticker">{matchedText}</div>
+            </div>
+      )
+    })
+  }
     return (
         <div class="accordion-contenta">
           <div class="auto-complete-pop-up">
-            <div class="auto-complete-row">
-              <div class="auto-complete-ticker">BT<span class="text-span-5">C</span></div>
-              <div class="autocomplete-name">Bitcoin</div>
-            </div>
-            <div class="auto-complete-row">
-              <div class="auto-complete-ticker">BT<span class="text-span-5">G</span></div>
-              <div class="autocomplete-name">Bitcoin Gold</div>
-            </div>
-            <div class="auto-complete-row">
-              <div class="auto-complete-ticker">BT<span class="text-span-5">M</span></div>
-              <div class="autocomplete-name custm">Bytom</div>
-            </div>
-            <div class="auto-complete-row">
-              <div class="auto-complete-ticker">BT<span class="text-span-5">S</span></div>
-              <div class="autocomplete-name">Bitshares</div>
-            </div>
-            <div class="auto-complete-row last-one">
-              <div class="auto-complete-ticker">BT<span class="text-span-5">T</span></div>
-              <div class="autocomplete-name">Bittorrent</div>
-            </div>
+            {
+                props.matchData.length ? rows : 
+                <p class="no-match-found">No matches found.</p>
+            }
           </div>
         </div>
     )
 }
+
+/*
+  unusued template until we get a proper autosuggest endpoint
+  <div class="auto-complete-row" onClick={() => {props.onUserSelect(match.ticker, props.inputIndex)}}>
+      <div class="auto-complete-ticker">{matchedText}</div>
+      <div class="autocomplete-name">{match.name}</div>
+  </div>
+
+*/

@@ -8,6 +8,7 @@
   grid-template-rows: auto auto;
   grid-row-gap: 16px;
   grid-column-gap: 16px;
+
 }
 
 body {
@@ -2315,6 +2316,9 @@ body {
 }
 
 .search-bar-section {
+  width: 100vw;
+  position: relative;
+  outline: 1px solid violet;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3077,6 +3081,7 @@ body {
 }
 
 .search_results_container {
+
   width: auto;
   margin-top: 0px;
 }
@@ -3358,6 +3363,7 @@ body {
 }
 
 .search-results-section {
+
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3371,6 +3377,7 @@ body {
 }
 
 .search-results-container {
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

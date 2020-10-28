@@ -1,0 +1,4 @@
+/* This class is applied to a duplicated result card to preserve the grid layout */
+.hidden {
+    opacity: 0;
+}

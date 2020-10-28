@@ -1,0 +1,8 @@
+.search-box-input-field {
+    background: inherit;
+}
+
+button:disabled {
+    color: grey !important;
+    border-color: grey !important;
+}
