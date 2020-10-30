@@ -37,7 +37,9 @@ export default class SearchWidget extends Component {
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
     setProgressBar = () => {
-        let increment = this.state.progress += (2 + Math.random() * 20)
+
+        let increment = this.state.progress;
+        increment +=  (2 + Math.random() * 20)
         // If progress bar is at 95, don't increase until pair data is received
         if (increment >= 90) {
             return
