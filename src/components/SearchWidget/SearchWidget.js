@@ -5,6 +5,7 @@ import LoadingBar from '../LoadingBar/LoadingBar';
 import SearchBar from '../SearchBar/SearchBar';
 import Skeleton from 'react-loading-skeleton';
 import './SearchWidget.css'
+import Helpers from  '../../utils/Helpers'
 
 
 export default class SearchWidget extends Component {
@@ -13,17 +14,14 @@ export default class SearchWidget extends Component {
         this.state = {
             results: null,
             overview: null,
-            loading: true,
+            loading: false,
             loggedIn: false,
             progress: 0,
             status: "",
         }
+        this.mockIntervals = Helpers.runAtRandomIntervals
     }
-    setResultsData = (resultsData) => {
-        console.log(resultsData)
-        const results = resultsData.results
-        const summary = resultsData.summary
-        // Set finished status first, then show results
+    setResultsData = (results, summary) => {
         this.setState({
             ...this.state,
             results: results,
@@ -32,12 +30,36 @@ export default class SearchWidget extends Component {
         })
     }
     createLoadingEffect = () => {
-        // random number increment
-        // will never reach 100
+        this.setState({
+            ...this.state,
+            loading: true
+        })
+        Helpers.runAtRandomIntervals(this.setProgressBar)
     }
-    setFinishedStatus = () => {
-        // activate after results are ready, right before setting results data.
-        // add a slight delay
+    setProgressBar = () => {
+        let increment = this.state.progress += (2 + Math.random() * 20)
+        // If progress bar is at 95, don't increase until pair data is received
+        if (increment >= 90) {
+            return
+        }
+        this.setState({
+            ...this.state,
+            progress: increment
+        })
+        console.log(this.state.progress)
+
+    }
+    setFinishedStatus = async (resultsData) => {
+        console.log('mocking finished status')
+        clearInterval(Helpers.runAtRandomIntervals)
+        const results = resultsData.results
+        const summary = resultsData.summary
+        this.setState({
+            ...this.state,
+            progress: 100
+        }, () => {
+            setTimeout(() => {this.setResultsData(results, summary)}, 1000)
+        })
     }
 
     componentDidMount() {
@@ -53,7 +75,11 @@ export default class SearchWidget extends Component {
                         <div class="find-the-best-price-text">Find the best price</div>
                         <div class="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
                     </div>
-                    <SearchBar onSearchFinished ={this.setResultsData} homepage = {this.props.homepage ? true: false}/>
+                    <SearchBar 
+                        onSearchFinished ={this.setFinishedStatus} 
+                        onSearch={this.createLoadingEffect} 
+                        homepage = {this.props.homepage ? true: false}
+                    />
                     <div class={this.state.loading ? 
                      "search-results-section sresults-section loading-wrapper"
                     :"search-results-section sresults-section"}>
@@ -76,7 +102,7 @@ export default class SearchWidget extends Component {
                             :  
                             this.state.loading ? 
                             <>
-                            <LoadingBar progress={25} status={"Consolidating exchanges..."}/>
+                            <LoadingBar progress={this.state.progress} status={"Consolidating exchanges..."}/>
                             <Skeleton className="sw-skeleton">
                             </Skeleton> 
                             </>
