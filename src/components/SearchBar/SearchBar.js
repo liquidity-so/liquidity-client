@@ -104,9 +104,6 @@ export default class SearchBar extends Component{
     this.props.onSearchFinished(results);
   }
 
-
-
-
   render() {
       return (
         <>

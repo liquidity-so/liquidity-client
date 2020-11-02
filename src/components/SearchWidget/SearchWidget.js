@@ -6,6 +6,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import Skeleton from 'react-loading-skeleton';
 import './SearchWidget.css'
 import Helpers from  '../../utils/Helpers'
+import SineWaveIcon from '../../assets/misc/sineWave-1.png'
 
 
 export default class SearchWidget extends Component {
@@ -37,9 +38,7 @@ export default class SearchWidget extends Component {
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
     setProgressBar = () => {
-
-        let increment = this.state.progress;
-        increment +=  (2 + Math.random() * 20)
+        let increment = this.state.progress += (2 + Math.random() * 20)
         // If progress bar is at 95, don't increase until pair data is received
         if (increment >= 90) {
             return
@@ -73,7 +72,8 @@ export default class SearchWidget extends Component {
             <>
             <div class="search-bar-section">
                 <div class="search-results-container sw-wrapper" >
-                    <div class="search-box-title-box"><img src="../images/sineWave-1.png" loading="lazy" width="48" alt="" class="sine_wave"/>
+                    <div class="search-box-title-box">
+                        <img src={SineWaveIcon} loading="lazy" width="48" alt="" class="sine_wave"/>
                         <div class="find-the-best-price-text">Find the best price</div>
                         <div class="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
                     </div>
@@ -119,9 +119,6 @@ export default class SearchWidget extends Component {
                     </div>
                 </div>
             </div>
-
-       
-
                 </>
         )
     }
