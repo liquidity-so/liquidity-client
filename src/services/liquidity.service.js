@@ -1,4 +1,5 @@
 export default class LiquidityService {
+
     async findClosestMatches(input) {
         // placeholder data
         console.log(input)
@@ -22,9 +23,10 @@ export default class LiquidityService {
         ]
     }
     async getExchangeData(pair1, pair2, volume, type, auth) {
-        // make request here
-        // If not logged in, should return limited dataset
-        return {
+        let results = null
+        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        return wait(3500).then(() => {
+            return results = {
                 "summary": {
                     "pair1": "BAT",
                     "pair2": "BTC",
@@ -56,6 +58,6 @@ export default class LiquidityService {
                     }
                 ]
             }
+        })
     }
 }
-

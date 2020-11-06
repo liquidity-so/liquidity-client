@@ -1,4 +1,5 @@
 import React from 'react';
+import LiquidityLogo from '../../assets/logos/Group-204.png';
 
 export default function Footer() {
     return (
@@ -6,7 +7,9 @@ export default function Footer() {
   <div class="footer-section">
   <div class="footer_content w-container">
     <div class="w-layout-grid grid-3">
-      <div class="div-block-50"><a href="index.html" aria-current="page" class="w-inline-block w--current"><img src="images/Group-204.png" loading="lazy" width="92" alt="" class="logo"/></a>
+      <div class="div-block-50">
+        <a href="index.html" aria-current="page" class="w-inline-block w--current">
+          <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></a>
         <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
         <p class="footer_description">@ 2020 Liquidity.so</p>
       </div>
@@ -46,7 +49,8 @@ export default function Footer() {
           <div class="footer_text_link">Send us a message</div>
         </a>
       </div>
-      <div class="mobile"><a href="index.html" aria-current="page" class="w-inline-block w--current"><img src="images/Group-204.png" loading="lazy" width="92" alt="" class="logo"/></a>
+      <div class="mobile"><a href="index.html" aria-current="page" class="w-inline-block w--current">
+        <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></a>
         <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
         <p class="footer_description">@ 2020 Liquidity.so</p>
       </div>

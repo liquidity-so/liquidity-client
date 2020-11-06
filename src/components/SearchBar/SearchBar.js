@@ -42,9 +42,6 @@ export default class SearchBar extends Component{
       this.setCurrentInput("", pairIndex)
       return 
     }
-    // TODO: Unusued for now. Requires Autosuggest API endpoint
-    //const matchData = await this.LiquidityApi.findClosestMatches(input);
-    
     const matchData = await TokenAutocomplete(input)
     this.setMatches(matchData, target)
  
@@ -101,12 +98,11 @@ export default class SearchBar extends Component{
   handleSubmitLiquidityQuery = async (pair1, pair2, size, type) => {
     // Replace with auth context token
     const token = null
+    this.props.onSearch();
     const results = await this.LiquidityApi.getExchangeData(pair1, pair2, size, type, token)
-    this.props.onSearchFinished(results)
+    console.log(results)
+    this.props.onSearchFinished(results);
   }
-
-
-
 
   render() {
       return (

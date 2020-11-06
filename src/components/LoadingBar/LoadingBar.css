@@ -16,9 +16,7 @@
 .progress-container .progress {
     width: 100%;
 }
-.loading-wrapper {
-    min-width: 100%;
-}
+
 .status-container {
     width: auto;
     display: flex;
