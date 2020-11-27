@@ -1,63 +1,29 @@
-export default class LiquidityService {
+import config from "../config";
 
-    async findClosestMatches(input) {
-        // placeholder data
-        console.log(input)
-        return [
-            {
-                ticker: "BTC",
-                name: "Bitcoin"
-            },
-            {
-                ticker: "BAT",
-                name: "Basic Attention Token"
-            },
-            {
-                ticker: "ADA",
-                name: "Cardano"
-            },
-            {
-                ticker: "XLM",
-                name: "Stellar Lumens"
-            },
-        ]
+export default class LiquidityService {
+    async autoFill(input) {
+        const url = `${config.API_BASE_URL}/api/autofill/suggest?query=${input}`;
+        const autoFillData = fetch(url)
+            .then((res) => {
+              if (!res.ok) {
+                console.log(res.status);
+                return null
+              }
+              return res.json();
+         })
+         return autoFillData;
     }
-    async getExchangeData(pair1, pair2, volume, type, auth) {
-        let results = null
-        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        return wait(3500).then(() => {
-            return results = {
-                "summary": {
-                    "pair1": "BAT",
-                    "pair2": "BTC",
-                    "price": "0.1655",
-                    "change": "5.32",
-                    "type": "Buy",
-                    "size": "100000",
-                    // replace with UTC/UNIX timestamp
-                    "time": "01:33:21",
-                },
-                "results": [
-                    {
-                        "name": "coinbase",
-                        "img": "",
-                        "pi": 95,
-                        "bps": 10,
-                        "cost": 380,
-                        "wap": 0.1752,
-                        "total": 33380
-                    },
-                    {
-                        "name": "binance",
-                        "img": "",
-                        "pi": 2,
-                        "bps": 13,
-                        "cost": 2320,
-                        "wap": 0.1667,
-                        "total": 33380
-                    }
-                ]
-            }
-        })
-    }
+    async simulateExchange(coin1, coin2, volume, type, auth) {
+        const url = `${config.API_BASE_URL}/api/simulate?coin1=${coin1}&coin2=${coin2}&volume=${volume}&order_type=${type}`;
+        console.log(url);
+        const exchangeData = fetch(url)
+                .then((res) => {
+                if (!res.ok) {
+                    console.log(res.status);
+                    return null
+                }
+                return res.json();
+            })
+            return exchangeData;
+        }
 }

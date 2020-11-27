@@ -16,7 +16,7 @@ export default class SearchBar extends Component{
       selectedPair0: null,
       selectedPair1: null,
       orderSize: null,
-      validQuery: false
+      validQuery: false,
     }
     this.pair0 = createRef();;
     this.pair1 = createRef();;
@@ -42,10 +42,10 @@ export default class SearchBar extends Component{
       this.setCurrentInput("", pairIndex)
       return 
     }
-    const matchData = await TokenAutocomplete(input)
+    // const matchData = await TokenAutocomplete(input)
+    const matchData = await this.LiquidityApi.autoFill(input);
+    console.log(matchData);
     this.setMatches(matchData, target)
- 
-    return
   }
 
   setMatches = (data, target) => {
@@ -62,11 +62,12 @@ export default class SearchBar extends Component{
     })
   }
   setSelectedPair = (data, pairIndex) => {
-    alert(data)
-    const selectedPair = (pairIndex === 0) ? "currentInput0" : (pairIndex === 1) ? "currentInput1" : null
+    const currentInput = (pairIndex === 0) ? "currentInput0" : (pairIndex === 1) ? "currentInput1" : null;
+    const selectedPair = (pairIndex === 0) ? "selectedPair0" : (pairIndex === 1) ? "selectedPair1" : null;
     this.setState({
       ...this.state,
-      [selectedPair]: data
+      [selectedPair]: data,
+      [currentInput]: data
     }, () => {
       this.validateInputs()
     })
@@ -84,6 +85,7 @@ export default class SearchBar extends Component{
  
   }
   validateInputs = () => {
+    // TODO:
     // Order size must be an int
     // Pairs must be selected
     // Pairs must be valid
@@ -92,15 +94,20 @@ export default class SearchBar extends Component{
       ...this.state,
       validQuery: true
     })
-    console.log(this.state.validQuery)
+    console.log(this.state)
   }
 
-  handleSubmitLiquidityQuery = async (pair1, pair2, size, type) => {
+  handleSubmitLiquidityQuery = async (type) => {
+    console.log(this.state);
     // Replace with auth context token
+    const coin1 = this.state.selectedPair0;
+    const coin2 = this.state.selectedPair1;
+    const orderSize = this.state.orderSize;
     const token = null
+    console.log(coin1, coin2, orderSize);
     this.props.onSearch();
-    const results = await this.LiquidityApi.getExchangeData(pair1, pair2, size, type, token)
-    console.log(results)
+    const results = await this.LiquidityApi.simulateExchange(coin1, coin2, orderSize, type, token)
+    console.log(results);
     this.props.onSearchFinished(results);
   }
 
@@ -164,12 +171,12 @@ export default class SearchBar extends Component{
             />
             <div class="div-block-138">
               <button 
-                onClick={() => this.handleSubmitLiquidityQuery()} 
+                onClick={() => this.handleSubmitLiquidityQuery('buy')} 
                 disabled={!!!this.state.validQuery} 
                 className="search-box-button w-button">
                   Buy</button>
               <button 
-                onClick={() => this.handleSubmitLiquidityQuery()} 
+                onClick={() => this.handleSubmitLiquidityQuery('sell')} 
                 disabled={!!!this.state.validQuery} 
                 className="search-box-button sell w-button">
                   Sell</button>

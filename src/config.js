@@ -1,5 +1,5 @@
 export default {
-    API_ENDPOINT: ``,
+    API_BASE_URL: `https://liquidity-api.herokuapp.com`,
     TOKEN_KEY: ''
   };
   

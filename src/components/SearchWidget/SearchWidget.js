@@ -19,16 +19,25 @@ export default class SearchWidget extends Component {
             loggedIn: false,
             progress: 0,
             status: "",
+            error: null
         }
-        this.mockIntervals = Helpers.runAtRandomIntervals
     }
     setResultsData = (results, summary) => {
-        this.setState({
-            ...this.state,
-            results: results,
-            overview: summary,
-            loading: false
-        })
+        if (!results || !summary) {
+            this.setState({
+                ...this.state,
+                error: true,
+                loading: false
+            })
+        }
+        else {
+            this.setState({
+                ...this.state,
+                results: results,
+                overview: summary,
+                loading: false
+            })
+        }
     }
     createLoadingEffect = () => {
         this.setState({
@@ -47,19 +56,21 @@ export default class SearchWidget extends Component {
             ...this.state,
             progress: increment
         })
-        console.log(this.state.progress)
 
     }
     setFinishedStatus = async (resultsData) => {
-        console.log('mocking finished status')
         clearInterval(Helpers.runAtRandomIntervals)
-        const results = resultsData.results
-        const summary = resultsData.summary
+        let results;
+        let summary;
+        if (resultsData) {
+            results = resultsData.results
+            summary = resultsData.summary
+        }
         this.setState({
             ...this.state,
             progress: 100
         }, () => {
-            setTimeout(() => {this.setResultsData(results, summary)}, 1000)
+            setTimeout(() => {this.setResultsData(results, summary)}, 500)
         })
     }
 
@@ -104,13 +115,16 @@ export default class SearchWidget extends Component {
                             :  
                             this.state.loading ? 
                             <>
-                            <LoadingBar progress={this.state.progress} status={"Consolidating exchanges..."}/>
-                            <Skeleton className="sw-skeleton">
-                            </Skeleton> 
+                                <LoadingBar progress={this.state.progress} status={"Consolidating exchanges..."}/>
+                                <Skeleton className="sw-skeleton">
+                                </Skeleton> 
                             </>
                             : null
                         }
-                
+                    {this.state.error ? 
+                    <div class="error-wrapper">
+                        <p>Unable to simulate exchange data. Please try a different pair</p>
+                    </div> : null }
                     </div>
                     { this.state.overview? 
                         <ResultCard data={this.state.overview} />

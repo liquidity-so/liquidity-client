@@ -2,30 +2,28 @@ import React from 'react';
 import './AccordionSearchList.css'
 
 export default function AccordionSearchList(props) {
+  console.log(props.matchData);
   let rows;
   if (props.matchData.length) {
     rows = props.matchData.map(match => {
-        // TODO: UNUSED FOR NOW
-        // Requires Autosuggest endpoint
-        /* if (match.name.length > 7) {
-          match.name = `${match.name.slice(0, 7)}...`
+        if (match.full_name.length > 7) {
+          match.full_name = `${match.full_name.slice(0, 7)}...`
         }
-        TODO: change match.item to match.ticker
-        */
-        const highlightIndex = match.item.indexOf(props.currentInput.toUpperCase())
-        let matchedText = match.item
+        const highlightIndex = match.symbol.indexOf(props.currentInput.toUpperCase())
+        let matchedText = match.symbol
         if (highlightIndex >= 0) {
           // If input matches part of symbol, wrap in span
           matchedText = 
-            [match.item.substring(0, highlightIndex),
+            [match.symbol.substring(0, highlightIndex),
               <span class="found-match">
-                {match.item.substring(highlightIndex, highlightIndex + props.currentInput.length)}
+                {match.symbol.substring(highlightIndex, highlightIndex + props.currentInput.length)}
               </span>,
-            match.item.substring(highlightIndex + props.currentInput.length)]
+            match.symbol.substring(highlightIndex + props.currentInput.length)]
         }
         return (
-            <div class="auto-complete-row" onClick={() => {props.onUserSelect(match.item, props.inputIndex)}}>
+            <div class="auto-complete-row" onClick={() => {props.onUserSelect(match.symbol, props.inputIndex)}}>
                 <div class="auto-complete-ticker">{matchedText}</div>
+                <div class="autocomplete-name">{match.full_name}</div>
             </div>
       )
     })

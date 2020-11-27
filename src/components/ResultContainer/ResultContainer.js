@@ -1,7 +1,6 @@
 import React from 'react';
 import ResultContainerItem from '../ResultContainerItem/ResultContainerItem';
 import './ResultContainer.css';
-import Skeleton from 'react-loading-skeleton';
 
 export default function ResultContainer(props) {
     console.log(props.queryResults)
@@ -57,30 +56,7 @@ export default function ResultContainer(props) {
               </div>
             </div>
           {results}
-          {results}
-          {results}
           {signUpBanner}
         </>
     )
 }
-
-/*
-
-
-<div class="sidebar-card left hide">
-              <div class="w-layout-grid sidebar-grid">
-                  <div class="title">Pair</div>
-                  <div class="title data">BAT/BTC</div>
-                  <div class="title something-good">Price</div>
-                  <div class="title data">$0.1655</div>
-                  <div class="title">Change</div>
-                  <div class="title price transparent">+5.32</div>
-                  <div class="title">Type</div>
-                  <div class="title data">Buy</div>
-                  <div class="title">Size</div>
-                  <div id="w-node-b029be24681b-2dc2b4ba" class="title data">100,000</div>
-                  <div class="title">Time</div>
-                  <div id="w-node-2ed8036e9013-2dc2b4ba" class="title data">01:33:21</div>
-              </div>
-          </div>
-  */
