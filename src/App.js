@@ -8,8 +8,12 @@ import DashboardPage from './pages/DashboardPage/DashboardPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import ExchangePage from './pages/ExchangesPage/ExchangePage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 
 function App() {
+  // Home Page, Product should be public only 
+  // Dashboard, Account is private only
   return (
     <div>
       <Route 
@@ -30,6 +34,12 @@ function App() {
       <Route 
         path={"/product"}
         render={() => <ProductPage/>}></Route>
+      <Route 
+        path={"/exchanges"}
+        render={() => <ExchangePage/>}></Route>
+      <Route 
+        path={"/about"}
+        render={() => <AboutUsPage/>}></Route>
       <Route 
         path={"/dashboard"}
         render={() => <DashboardPage/>}></Route>
