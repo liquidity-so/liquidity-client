@@ -65,7 +65,7 @@ export default class LoginForm extends Component {
         return(
             <div class="signup-signin-section-container w-container">
                 <div class="sign-up-in-container" >
-                    <h1 class="heading-4">Log in</h1>
+                    <h1 class="heading-4">{this.props.signUp ? 'Sign up' : 'Log in'}</h1>
                     <div class="form-container">
                         <button class="third-party-btn twitter_button w-inline-block" >
                             <img src={TwitterLogo} loading="lazy" alt="" class="image-16"/>
