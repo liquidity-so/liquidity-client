@@ -27,7 +27,7 @@ function App() {
         render={() => <SignUpPage/>}></Route>
       <Route 
         path={"/welcome"}
-        render={() => <WelcomePage/>}></Route>
+        render={props => <WelcomePage {...props}/>}></Route>
       <Route 
         path={"/pricing"}
         render={() => <PricingPage/>}></Route>
