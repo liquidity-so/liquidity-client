@@ -3,10 +3,17 @@ import SearchWidget from '../../components/SearchWidget/SearchWidget'
 
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
-
 import './HomePage.css'
 import PromoCardHorizontalRight from '../../components/common/Cards/PromoCardHorizontal/PromoCardHorizontalRight';
 import PromoCardHorizontalLeft from '../../components/common/Cards/PromoCardHorizontal/PromoCardHorizontalLeft';
+
+import {
+    BINANCE_ALT,
+    HUOBI_ALT,
+    FTX_ALT,
+    KRAKEN_ALT,
+    HITBTC_ALT
+} from '../../assets/logos/exchanges';
 
 export default function HomePage() {
     return(
@@ -19,7 +26,21 @@ export default function HomePage() {
         <div class="home_exchange_block">
         <h5 class="heading_h5 center">Supported Exchanges</h5>
         <div class="home_supported_exchanges">
-            <a href="http://binance.com" target="_blank" class="exchanges-supported w-inline-block"><img src="images/Binance_1Binance.png" loading="lazy" width="100" alt="" class="binance_home"/></a><a href="http://huobi.com" target="_blank" class="exchanges-supported w-inline-block"><img src="images/HUOBI-GLOBAL_1HUOBI-GLOBAL.png" loading="lazy" width="100" alt="" class="huobi_home"/></a><a href="http://ftx.com" target="_blank" class="exchanges-supported hide w-inline-block"><img src="images/FTX_1FTX.png" loading="lazy" width="100" alt="" class="ftx_home"/></a><a href="http://kraken.com" target="_blank" class="exchanges-supported w-inline-block"><img src="images/Kraken_1Kraken.png" loading="lazy" width="100" alt="" class="kraken_home"/></a><a href="http://hitbtc.com" target="_blank" class="exchanges-supported w-inline-block"><img src="images/HitBTC_1HitBTC.png" loading="lazy" width="100" alt="" class="hitbtc_home"/></a>
+            <a href="http://binance.com" target="_blank" class="exchanges-supported w-inline-block">
+                <img src={BINANCE_ALT} loading="lazy" width="100" alt="" class="binance_home"/>
+            </a>
+            <a href="http://huobi.com" target="_blank" class="exchanges-supported w-inline-block">
+                <img src={HUOBI_ALT} loading="lazy" width="100" alt="" class="huobi_home"/>
+            </a>
+            <a href="http://ftx.com" target="_blank" class="exchanges-supported hide w-inline-block">
+                <img src={FTX_ALT}  loading="lazy" width="100" alt="" class="ftx_home"/>
+            </a>
+            <a href="http://kraken.com" target="_blank" class="exchanges-supported w-inline-block">
+                <img src={KRAKEN_ALT} loading="lazy" width="100" alt="" class="kraken_home"/>
+            </a>
+            <a href="http://hitbtc.com" target="_blank" class="exchanges-supported w-inline-block">
+                <img src={HITBTC_ALT}  loading="lazy" width="100" alt="" class="hitbtc_home"/>
+            </a>
         </div>
             <a href="exchanges.html" class="see-more-exchanges-link">See more</a>
         </div>

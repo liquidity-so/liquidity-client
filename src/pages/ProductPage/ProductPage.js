@@ -2,9 +2,15 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
+import PLATFORM_IMG from '../../assets/misc/Platform.png';
+import PLATFORM_IMG_500 from '../../assets/misc/Platform-p-500.png';
+import PLATFORM_IMG_800 from '../../assets/misc/Platform-p-800.png';
+import PLATFORM_IMG_1080 from '../../assets/misc/Platform-p-1080.png';
+import PLATFORM_IMG_1600 from '../../assets/misc/Platform-p-1600.png';
 
 export default class ProductPage extends Component{
 
+    //TODO: Refactor to functional component with hooks
     componentDidMount() {
       const element = document.querySelector('.calculator');
       const script = document.createElement("script")
@@ -28,8 +34,9 @@ export default class ProductPage extends Component{
           </div>
         </Link>
       </div>
-      <img src="images/Platform.png" loading="lazy" sizes="100vw" 
-      srcset="images/Platform-p-500.png 500w, images/Platform-p-800.png 800w, images/Platform-p-1080.png 1080w, images/Platform-p-1600.png 1600w, images/Platform.png 1864w" 
+      <img src={PLATFORM_IMG} loading="lazy" sizes="100vw" 
+      srcSet={`${PLATFORM_IMG_500} 500w`, `${PLATFORM_IMG_800} 800w`,
+      `${PLATFORM_IMG_1080} 1080w`,`${PLATFORM_IMG_1600} 1600w`, `${PLATFORM_IMG} 1864w`}
       alt="" class="product-search-image"></img>
       </div>
   </div>
