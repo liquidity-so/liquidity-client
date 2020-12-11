@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import ExchangeCell from '../../components/ExchangeCell/ExchangeCell';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
+import BLACKBOX_IMG from '../../assets/misc/BlackBox.png';
+
 //Exchange images
 import ExchangeList from './_ExchangeList';
 
@@ -18,7 +20,7 @@ export default function ExchangePage() {
         <div>
             <div class="exchanges_container w-container">
                 <div class="product-hero-container">
-                    <img src="images/Drawing.png" loading="lazy" width="138" height="64" alt="" class="exchange-image"/>
+                    <img src={BLACKBOX_IMG} loading="lazy" width="138" height="64" alt="" class="exchange-image"/>
                     <h2 class="heading_h2">Exchanges</h2>
                     <div class="subtitle hero">Over 50+ exchanges supported.</div>
                     <Link to="/signup" class="signup_button w-inline-block">

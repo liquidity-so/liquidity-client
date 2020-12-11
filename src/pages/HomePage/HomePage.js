@@ -14,6 +14,7 @@ import {
     KRAKEN_ALT,
     HITBTC_ALT
 } from '../../assets/logos/exchanges';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
     return(
@@ -42,7 +43,7 @@ export default function HomePage() {
                 <img src={HITBTC_ALT}  loading="lazy" width="100" alt="" class="hitbtc_home"/>
             </a>
         </div>
-            <a href="exchanges.html" class="see-more-exchanges-link">See more</a>
+            <Link to="/exchanges" class="see-more-exchanges-link">See more</Link>
         </div>
     </div>  
     <PromoCardHorizontalRight/>
