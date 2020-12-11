@@ -33,10 +33,10 @@ export default function AppNavBar(props) {
                         <div class="text-block-22">$25/50k</div>
                     </div>
                     <img src="../images/Group-255.png" loading="lazy" alt=""/>
-                    <Link to="https://app.tillypay.com/pay/liquidity" class="upgrade_plan_button w-inline-block">
+                    <a href="https://app.tillypay.com/pay/liquidity" class="upgrade_plan_button w-inline-block">
                         <div class="upgrade-my-plan-text">Upgrade my plan</div>
-                    </Link>
-                    <Link to="/dashboard" class="dropdown-button w-inline-block">
+                    </a>
+                    <Link to="/dashboard/account" class="dropdown-button w-inline-block">
                         <img src={SettingsIcon} loading="lazy" width="14" alt="" class="dropdown-icon"/>
                         <div class="text-block-39">Account</div>
                     </Link>

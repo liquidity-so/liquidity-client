@@ -11,6 +11,8 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import ExchangePage from './pages/ExchangesPage/ExchangePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
+import AccountPage from './pages/AccountPage/AccountPage';
+import AccountSettings from './components/AccountSettings/AccountSettings';
 
 function App() {
   // Home Page, Product should be public only 

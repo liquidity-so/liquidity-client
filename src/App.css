@@ -2178,7 +2178,6 @@ body {
   flex-direction: column;
   border-radius: 2px;
   background-color: #fdfeff;
-  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .volume-usage-chart {
@@ -3939,7 +3938,6 @@ body {
     align-items: center;
     border-radius: 4px;
     background-color: transparent;
-    box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.1);
     color: #fdfeff;
     font-weight: 500;
   }
