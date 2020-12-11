@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
 
@@ -21,11 +22,11 @@ export default class ProductPage extends Component{
       <div class="product-hero-container">
         <h2 class="heading_h2">Liquidity for everyone</h2>
         <div class="subtitle hero">One simple tool that helps you scan through 50+ exchanges for the best price.</div>
-        <a href="sign-up.html" class="signup_button w-inline-block">
+        <Link to="/signup" class="signup_button w-inline-block">
           <div class="exchange_button_interior">
             <p class="say_hi_text">Get started</p>
           </div>
-        </a>
+        </Link>
       </div>
       <img src="images/Platform.png" loading="lazy" sizes="100vw" 
       srcset="images/Platform-p-500.png 500w, images/Platform-p-800.png 800w, images/Platform-p-1080.png 1080w, images/Platform-p-1600.png 1600w, images/Platform.png 1864w" 
@@ -57,11 +58,11 @@ export default class ProductPage extends Component{
         </div>
     </div>
     <div class="container_calculator customcalc w-container">
-      <a href="#" class="link-block w-inline-block">
+      <Link to="/signup" class="link-block w-inline-block">
         <div class="exchange_button_interior">
           <h1 class="heading_h5">Save money</h1>
         </div>
-      </a>
+      </Link>
       <div class="w-layout-grid grid-31 custom">
         <div id="w-node-f2daa0ddb9eb-7647ea94" class="div-block-139">
           <p class="paragraph_product loser something custom">Poor execution can lead to <span class="text-span-11">$1000s in unexpected trading costs</span> every month.<br/>
@@ -77,21 +78,21 @@ export default class ProductPage extends Component{
       </div>
     </div>
     <div class="container_product w-container">
-      <a href="#" target="_blank" class="mini_title yellow w-inline-block">
+      <Link to="/signup" target="_blank" class="mini_title yellow w-inline-block">
         <div class="exchange_button_interior">
           <h5 class="heading_h5">Increase profits</h5>
         </div>
-      </a>
+      </Link>
       <p class="paragraph_product dark_background">Discover the <span class="text-span-12">most cost effective exchange</span> for your trade and know if your order can be filled. </p>
       <img src="images/Dark_Rectangle.png" loading="lazy" sizes="(max-width: 767px) 80vw, 100vw" 
       srcset="images/Dark_Rectangle-p-500.png 500w, images/Dark_Rectangle-p-800.png 800w, images/Dark_Rectangle-p-1080.png 1080w, images/Dark_Rectangle.png 1560w" alt="" class="product-image"></img>
       </div>
     <div class="container_product mitigate w-container">
-      <a href="#" target="_blank" class="mini_title red w-inline-block">
+      <Link to="/signup" target="_blank" class="mini_title red w-inline-block">
         <div class="exchange_button_interior">
           <h5 class="heading_h5">Mitigate Risk</h5>
         </div>
-      </a>
+      </Link>
       <p class="paragraph_product dark_background">Keep track of your portfolio’s liquidity and <span class="text-span-13">anticipate trading costs.</span> Avoid fat fingering and potential slippage.</p>
       <img src="images/Dark_Rectangle.png" loading="lazy" sizes="(max-width: 767px) 80vw, 100vw" 
       srcset="images/Dark_Rectangle-p-500.png 500w, images/Dark_Rectangle-p-800.png 800w, images/Dark_Rectangle-p-1080.png 1080w, images/Dark_Rectangle.png 1560w" alt="" class="product-image"></img>
@@ -101,11 +102,11 @@ export default class ProductPage extends Component{
     <div class="video-container customshit w-container">
       <div class="call_to_action">
         <h1 class="heading_h1 call_to_action">Save on your next trade.</h1>
-        <a href="sign-up.html" class="signup_button_dark w-inline-block">
+        <Link to="/signup" class="signup_button_dark w-inline-block">
           <div class="exchange_button_interior">
             <p class="demo_text">Get started</p>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   </div>

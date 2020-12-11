@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import ExchangeCell from '../../components/ExchangeCell/ExchangeCell';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
+//Exchange images
+import ExchangeList from './_ExchangeList';
+
 
 export default function ExchangePage() {
-    const exchangeList = [];
+    const exchangeList = ExchangeList;
     const exchangesGridTemplate = exchangeList.map(exchange => {
-        return <ExchangeCell/>
+        return <ExchangeCell exchangeImg={exchange.img} name={exchange.name}/>
     });
     return (
         <>

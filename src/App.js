@@ -10,12 +10,14 @@ import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import ExchangePage from './pages/ExchangesPage/ExchangePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 
 function App() {
   // Home Page, Product should be public only 
   // Dashboard, Account is private only
   return (
-    <div>
+    <>
+      <ScrollToTop />
       <Route 
         exact path={"/"}
         render={() => <HomePage/>}></Route>
@@ -43,7 +45,7 @@ function App() {
       <Route 
         path={"/dashboard"}
         render={() => <DashboardPage/>}></Route>
-    </div>
+    </>
   );
 }
 

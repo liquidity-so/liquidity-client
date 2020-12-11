@@ -16,7 +16,7 @@ export default class LiquidityService {
          return autoFillData;
     }
     async simulateExchange(coin1, coin2, volume, type, auth) {
-        const url = `${this.BASE_URL}/simulate?coin1=${coin1}&coin2=${coin2}&volume=${volume}&order_type=${type}`;
+        const url = `${this.BASE_URL}/api/simulate?coin1=${coin1}&coin2=${coin2}&volume=${volume}&order_type=${type}`;
         const exchangeData = fetch(url)
                 .then((res) => {
                 if (!res.ok) {
