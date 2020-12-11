@@ -25,13 +25,12 @@ class OnboardingForm extends Component {
     }
     handleCreateNewUser = async () => {
         this.validateNewUser();
-        /*
         const newUser = await this.LiquidityApi.createNewUser({
             email: this.state.email,
             password: this.state.password,
             username: this.state.username
         })
-        console.log(newUser);*/
+        console.log(newUser);
     } 
     // TODO: Add error messages for validation
     onChangePasswordConfirm = (value) => {

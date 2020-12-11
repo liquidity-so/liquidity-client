@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
 
-export default function ProductPage(){
-    return (
+export default class ProductPage extends Component{
+
+    componentDidMount() {
+      const element = document.querySelector('.calculator');
+      const script = document.createElement("script")
+      script.src = 'https://app.convertcalculator.co/embed.js'
+      script.async = true
+      element.appendChild(script)
+    }
+
+    render() {
+      return (
     <>
     <NavBar/>
     <div class="product-section">
@@ -61,7 +71,8 @@ export default function ProductPage(){
         <div id="w-node-274447c22b55-7647ea94" class="calculator">
           <div class="html-embed script w-embed w-script">
             <div class="calculator" data-calc-id="43HmsvKsGvjkrsWpz"></div>
-          </div>
+   
+            </div>
         </div>
       </div>
     </div>
@@ -98,61 +109,8 @@ export default function ProductPage(){
       </div>
     </div>
   </div>
-  <div class="footer-section">
-    <div class="footer_content w-container">
-      <div class="w-layout-grid grid-3">
-        <div class="div-block-50"><a href="index.html" class="w-inline-block"><img src="images/Group-204.png" loading="lazy" width="92" alt="" class="logo"></img></a>
-          <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
-          <p class="footer_description">@ 2020 Liquidity.so</p>
-        </div>
-        <div class="footer_column">
-          <div class="footer_title">Product</div>
-          <a href="product1.html" aria-current="page" class="footer_text_link w-inline-block w--current">
-            <div class="footer_text_link">Overview</div>
-          </a>
-          <a href="exchanges.html" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Exchanges</div>
-          </a>
-          <a href="pricing.html" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Pricing</div>
-          </a>
-        </div>
-        <div class="footer_column">
-          <div class="footer_title">Company</div>
-          <a href="about-us.html" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">About</div>
-          </a>
-          <a href="https://liquidity.substack.com/" target="_blank" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Newsletter</div>
-          </a>
-          <a href="https://twitter.com/LiquidityHQ" target="_blank" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Twitter</div>
-          </a>
-        </div>
-        <div class="footer_column">
-          <div class="footer_title">Help &amp; Contact</div>
-          <a href="https://calendly.com/liquidityhq/15min" target="_blank" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Book a call</div>
-          </a>
-          <a href="https://discord.gg/TNQX5ea" target="_blank" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Discord</div>
-          </a>
-          <a href="#" class="footer_text_link w-inline-block">
-            <div class="footer_text_link">Send us a message</div>
-          </a>
-        </div>
-        <div class="mobile">
-          <a href="index.html" class="w-inline-block">
-              <img src="images/Group-204.png" loading="lazy" width="92" alt="" class="logo"></img>
-          </a>
-          <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
-          <p class="footer_description">@ 2020 Liquidity.so</p>
-        </div>
-      </div>
-    </div>
-    </div>
-    <Footer/>
-    </>
-    )
+  <Footer/>
+  </>
+    )}
 }
 
