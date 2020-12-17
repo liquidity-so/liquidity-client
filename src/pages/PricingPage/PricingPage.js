@@ -50,7 +50,7 @@ export default function PricingPage() {
     <div class="video-container customshit w-container">
       <div class="call_to_action">
         <h1 class="heading_h1 call_to_action">Save on your next trade.</h1>
-        <Link to="/sign-up" class="signup_button_dark w-inline-block">
+        <Link to="/signup" class="signup_button_dark w-inline-block">
           <div class="exchange_button_interior">
             <p class="demo_text">Get started</p>
           </div>

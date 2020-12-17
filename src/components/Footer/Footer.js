@@ -68,8 +68,8 @@ export default function Footer() {
       <div class="footer_content w-container">
         <div class="w-layout-grid grid-3">
           <div class="div-block-50">
-            <a href="index.html" aria-current="page" class="w-inline-block w--current">
-              <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></a>
+            <Link to="/" aria-current="page" class="w-inline-block w--current">
+              <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></Link>
             <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
             <p class="footer_description">@ 2020 Liquidity.so</p>
           </div>
