@@ -1462,6 +1462,7 @@ body {
 }
 
 .email-input-field-button-container {
+  max-width: 317px;
   width: 100%;
   font-weight: 500;
 }

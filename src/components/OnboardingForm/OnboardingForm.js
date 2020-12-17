@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LiquidityService from '../../services/liquidity.service';
+import "./OnboardingForm.css";
 
 class OnboardingForm extends Component {
     state = {
@@ -9,6 +10,7 @@ class OnboardingForm extends Component {
         password: "",
         username: "",
         confirmPass: "",
+        error: null,
     }
     componentDidMount() {
         this.LiquidityApi = new LiquidityService()
@@ -24,7 +26,10 @@ class OnboardingForm extends Component {
         this.setCredentials(value, "password")
     }
     handleCreateNewUser = async () => {
-        this.validateNewUser();
+        const validUser = this.validateNewUser();
+        if (!validUser) {
+            return
+        }
         const newUser = await this.LiquidityApi.createNewUser({
             email: this.state.email,
             password: this.state.password,
@@ -32,24 +37,58 @@ class OnboardingForm extends Component {
         })
         console.log(newUser);
     } 
-    // TODO: Add error messages for validation
     onChangePasswordConfirm = (value) => {
         this.setCredentials(value, "confirmPass")
     }
     checkifPasswordsMatch = () => {
-        console.log(this.state);
-        alert('matching passwords ' + (this.state.confirmPass === this.state.password))
-        return (this.state.confirmPass === this.state.password);
+        const matchingPasswords = this.state.confirmPass === this.state.password;
+        if (!matchingPasswords) {
+            this.setState({
+                ...this.state,
+                error: "Passwords do not match."
+            })
+        }
+        else {
+            this.setState({
+            ...this.state,
+            error: null
+            })
+        }
+        return matchingPasswords
     }
     checkifValidPassword = () => {
         const strongPassword = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/)
-        alert('valid password ' + strongPassword.test(this.state.password))
-        return strongPassword.test(this.state.password);
+        const goodPassword = strongPassword.test(this.state.password)
+        if (!goodPassword) {
+            this.setState({
+                ...this.state,
+                error:"Passwords must be at least 6 characters, contain at least an uppercase letter, lowercase letter and a digit"
+            })
+        }
+        else {
+            this.setState({
+            ...this.state,
+            error: null
+            })
+        }
+        return goodPassword
     }
     checkIfValidUserName =  () => {
         const validUserName = RegExp(/^([a-zA-Z])[a-zA-Z0-9-_]*$/)
-        alert('valid username ' + validUserName.test(this.state.username))
-        return validUserName.test(this.state.username);
+        const goodUserName = validUserName.test(this.state.username);
+        if (!goodUserName) {
+            this.setState({
+                ...this.state,
+                error: "Username is invalid, please enter a different username"
+            })
+        }
+        else {
+            this.setState({
+            ...this.state,
+            error: null
+            })
+        }
+        return goodUserName
     }
     validateNewUser = () => {
         return this.checkifValidPassword() && this.checkifPasswordsMatch() && this.checkIfValidUserName()
@@ -78,10 +117,7 @@ class OnboardingForm extends Component {
                 <div class="text-block-100">First things first, tell us a little about yourself</div>
             </div>
             <div class="sign-up-in-container">
-                <div class="div-block-128">
-                    <img src="images/Frame-22.png" loading="lazy" width="80" alt="" class="signup_avatar"></img>
-                <div class="signup_avatar_button">Add a photo</div>
-                </div>
+              
                 <div class="email-input-field-button-container">
                 <div class="input_field_header">Username</div>
                 <input 
@@ -102,10 +138,19 @@ class OnboardingForm extends Component {
                     placeholder="Confirm Password" 
                     onChange={(e) => this.onChangePasswordConfirm(e.target.value)}/>
                 <div class="div-block-126"></div>
+                {
+                    this.state.error ? 
+                    <div className="onboard-status-block">
+                        <p>{this.state.error}</p>
+                    </div> 
+                    : null
+                }
                 <div class="email_button w-inline-block"  onClick={e => this.handleCreateNewUser(e)}>
                     <div class="text-block-7">Continue</div>
                 </div>
+            
                 </div>
+         
                 </div>
                 <div class="text-block-88">You&#x27;re currently logged in as <span class="text-span-9">{this.state.email}</span>. <br/>If you don&#x27;t intent to set up a new account, you can
                 <Link to="/login" class="link-5"> log in with another email</Link>.</div>
@@ -115,3 +160,10 @@ class OnboardingForm extends Component {
     }
 }
 export default withRouter(OnboardingForm);
+
+/* UNUSED FOR NOW, THIS GOES RIGHT BELOW ".sign-up-in-container"
+  <div class="div-block-128">
+                    <img src="images/Frame-22.png" loading="lazy" width="80" alt="" class="signup_avatar"></img>
+                    <div class="signup_avatar_button">Add a photo</div>
+                </div>
+*/

@@ -27,7 +27,7 @@ export default class SearchWidget extends Component {
         if (!results || !summary) {
             this.setState({
                 ...this.state,
-                error: true,
+                error: 'Unable to simulate exchange data. Please try a different pair',
                 loading: false
             })
         }
@@ -43,7 +43,8 @@ export default class SearchWidget extends Component {
     createLoadingEffect = () => {
         this.setState({
             ...this.state,
-            loading: true
+            loading: true,
+            error: null
         })
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
@@ -128,7 +129,7 @@ export default class SearchWidget extends Component {
                         }
                     {this.state.error ? 
                     <div class="error-wrapper">
-                        <p>Unable to simulate exchange data. Please try a different pair</p>
+                        <p>{this.state.error}</p>
                     </div> : null }
                     </div>
                     { this.state.overview? 
