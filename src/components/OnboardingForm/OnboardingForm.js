@@ -152,7 +152,7 @@ class OnboardingForm extends Component {
                 </div>
          
                 </div>
-                <div class="text-block-88">You&#x27;re currently logged in as <span class="text-span-9">{this.state.email}</span>. <br/>If you don&#x27;t intent to set up a new account, you can
+                <div class="text-block-88">You&#x27;re currently logged in as <span class="text-span-9">{this.state.email}</span>. <br/>If you don&#x27;t intend to set up a new account, you can
                 <Link to="/login" class="link-5"> log in with another email</Link>.</div>
                 </div>
             </div>
