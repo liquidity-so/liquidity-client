@@ -4,6 +4,7 @@ import SettingsIcon from '../../assets/icons/settings.png';
 import LogOutIcon from '../../assets/icons/log-out.png';
 import ChevronDownIcon from '../../assets/icons/chevron-down.png';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token.service';
 
 
 export default class AppNavBar extends Component {
@@ -15,6 +16,9 @@ export default class AppNavBar extends Component {
             ...this.state,
             navIsShown: isShown
         })
+    }
+    handleUserLogout = () => {
+        TokenService.clearAuthToken();
     }
     render(){
         const AppNavCard =       
@@ -33,7 +37,7 @@ export default class AppNavBar extends Component {
                 <img src={SettingsIcon} loading="lazy" width="14" alt="" class="dropdown-icon"/>
                 <div class="text-block-39">Account</div>
             </Link>
-            <Link to="/" class="dropdown-button w-inline-block">
+            <Link onClick={this.handleUserLogout} to="/" class="dropdown-button w-inline-block">
                 <img src={LogOutIcon} loading="lazy" width="14" alt="" class="dropdown-icon"/>
                 <div class="text-block-41">Log out</div>
             </Link>

@@ -4,6 +4,7 @@ import LiquidityService from '../../services/liquidity.service';
 import TokenAutocomplete from '../../utils/TokenAutocomplete';
 
 import "./SearchBar.css"
+import TokenService from '../../services/token.service';
 
 export default class SearchBar extends Component{
   constructor(props) {
@@ -103,8 +104,8 @@ export default class SearchBar extends Component{
     const coin1 = this.state.selectedPair0;
     const coin2 = this.state.selectedPair1;
     const orderSize = this.state.orderSize;
-    const token = null
-    console.log(coin1, coin2, orderSize);
+    const auth = TokenService.getAuthToken()
+    const token = auth ? auth : null;
     this.props.onSearch();
     const results = await this.LiquidityApi.simulateExchange(coin1, coin2, orderSize, type, token)
     console.log(results);

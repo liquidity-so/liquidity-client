@@ -4,13 +4,15 @@ import GoogleLogo from "../../assets/logos/GoogleLogo.png";
 import { withRouter } from 'react-router-dom';
 import "./LoginForm.css"
 import LiquidityService from "../../services/liquidity.service";
+import TokenService from "../../services/token.service";
 
 class LoginForm extends Component {
     state = {
         email: "",
-        pass: "",
+        password: "",
         toggledField: false,
         emailValid: true,
+        error: null
     }
     componentDidMount() {
         this.LiquidityApi = new LiquidityService()
@@ -51,15 +53,34 @@ class LoginForm extends Component {
         [target]: data
         })
     } 
-    onUserLogin = () => {
-        // POST LOGIN
+    handleUserLogin = async (e) => {
+        e.preventDefault();
+        const credentials = {
+            username: this.state.email,
+            password: this.state.password
+        }
+        this.LiquidityApi.loginUser(credentials).then(data => {
+            if (data) {
+                TokenService.saveAuthToken(data.token)
+                alert(data.token);
+                this.props.history.push('/dashboard')
+            }
+            else{
+                this.setState({
+                    ...this.state,
+                    error: "Incorrect username or password."
+                })
+                alert("ERROR: COULD NOT FIND USERNAME OR PASSWORD")
+            }
+        })
+        
     }
     render(){
         const passwordField = 
         !this.state.toggledField ? null : 
             <>
             <label for ="password" class="input_field_header">Password</label>
-            <input name="password" id="password" class="email-input-field-sign-up-sign-in filled" placeholder="Enter your password..." 
+            <input name="password" id="password" type="password" class="email-input-field-sign-up-sign-in filled" placeholder="Enter your password..." 
             onChange={(e) => this.onChangePassword(e.target.value)}/>
             </>
 
@@ -69,7 +90,7 @@ class LoginForm extends Component {
                 <div class="text-block-7">Continue with Email</div>
             </button>
             :
-            <button class="next-btn email_button w-inline-block">
+            <button onClick={(e) => this.handleUserLogin(e)} class="next-btn email_button w-inline-block">
                 <div class="text-block-7">Continue with Password</div>
             </button>
         return(

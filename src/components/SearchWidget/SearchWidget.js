@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton';
 import './SearchWidget.css'
 import Helpers from  '../../utils/Helpers'
 import SineWaveIcon from '../../assets/misc/sineWave-1.png'
+import TokenService from '../../services/token.service';
 
 
 export default class SearchWidget extends Component {
@@ -75,7 +76,12 @@ export default class SearchWidget extends Component {
     }
 
     componentDidMount() {
-        // TODO: Check login status. Replace with context
+        const authorizedUser = TokenService.getAuthToken();
+        const loginStatus = authorizedUser ? true : false;
+        this.setState({
+            ...this.state,
+            loggedIn: loginStatus
+        })
     }
     render() {
         // TODO: REFACTOR LOADING TEMPLATE TO A DIFFERENT COMPONENT
