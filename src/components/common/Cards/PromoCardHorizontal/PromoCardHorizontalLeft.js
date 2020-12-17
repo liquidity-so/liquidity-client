@@ -19,7 +19,7 @@ export default function PromoCardHorizontalLeft(props) {
             <div  class="card_paragraph mobile">
               <h3 class="heading_h3 right">{props.data.subheading}</h3>
               <h1 class="heading_h1 card right">{props.data.heading}</h1>
-              <p class="paragraph_home right paragraph">{props.caption}</p>
+              <p class="paragraph_home right paragraph">{props.data.caption}</p>
             </div>
           </div>
         </div>

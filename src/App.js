@@ -13,6 +13,8 @@ import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 import AccountPage from './pages/AccountPage/AccountPage';
 import AccountSettings from './components/AccountSettings/AccountSettings';
+import PrivateRoute from './utils/PrivateRoute';
+import PublicOnlyRoute from './utils/PublicOnlyRoute';
 
 function App() {
   // Home Page, Product should be public only 
@@ -20,18 +22,6 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <Route 
-        exact path={"/"}
-        render={() => <HomePage/>}></Route>
-      <Route 
-        path={"/login"}
-        render={() => <LoginPage/>}></Route>
-      <Route 
-        path={"/signup"}
-        render={() => <SignUpPage/>}></Route>
-      <Route 
-        path={"/welcome"}
-        render={props => <WelcomePage {...props}/>}></Route>
       <Route 
         path={"/pricing"}
         render={() => <PricingPage/>}></Route>
@@ -44,9 +34,21 @@ function App() {
       <Route 
         path={"/about"}
         render={() => <AboutUsPage/>}></Route>
-      <Route 
+      <PublicOnlyRoute 
+        exact path={"/"}
+        component={HomePage}></PublicOnlyRoute>
+      <PublicOnlyRoute 
+        path={"/login"}
+        component={LoginPage}></PublicOnlyRoute>
+      <PublicOnlyRoute 
+        path={"/signup"}
+        component={SignUpPage}></PublicOnlyRoute>
+      <PublicOnlyRoute 
+        path={"/welcome"}
+        component={WelcomePage}></PublicOnlyRoute>
+      <PrivateRoute 
         path={"/dashboard"}
-        render={() => <DashboardPage/>}></Route>
+        component={DashboardPage}></PrivateRoute>
     </>
   );
 }

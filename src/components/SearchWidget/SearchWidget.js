@@ -84,7 +84,6 @@ export default class SearchWidget extends Component {
         })
     }
     render() {
-        // TODO: REFACTOR LOADING TEMPLATE TO A DIFFERENT COMPONENT
         return (
             <>
             <div class="search-bar-section">
