@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ResultContainerItem from '../ResultContainerItem/ResultContainerItem';
 import './ResultContainer.css';
 
@@ -30,7 +31,7 @@ export default function ResultContainer(props) {
                 Sign up to uncover the exchanges, 
                 get the full results, 
                 get link to exchanges and more. Get <strong>50 free searches/month</strong>.
-                <a href="../sign-up.html" class="link-6">Create a free account</a>
+                <Link to="/signup" class="link-6">Create a free account</Link>
             </div>
         </div>    
     }

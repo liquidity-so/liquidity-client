@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton';
 import './SearchWidget.css'
 import Helpers from  '../../utils/Helpers'
 import SineWaveIcon from '../../assets/misc/sineWave-1.png'
+import TokenService from '../../services/token.service';
 
 
 export default class SearchWidget extends Component {
@@ -26,7 +27,7 @@ export default class SearchWidget extends Component {
         if (!results || !summary) {
             this.setState({
                 ...this.state,
-                error: true,
+                error: 'Unable to simulate exchange data. Please try a different pair',
                 loading: false
             })
         }
@@ -42,7 +43,8 @@ export default class SearchWidget extends Component {
     createLoadingEffect = () => {
         this.setState({
             ...this.state,
-            loading: true
+            loading: true,
+            error: null
         })
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
@@ -75,10 +77,14 @@ export default class SearchWidget extends Component {
     }
 
     componentDidMount() {
-        // TODO: Check login status. Replace with context
+        const authorizedUser = TokenService.getAuthToken();
+        const loginStatus = authorizedUser ? true : false;
+        this.setState({
+            ...this.state,
+            loggedIn: loginStatus
+        })
     }
     render() {
-        // TODO: REFACTOR LOADING TEMPLATE TO A DIFFERENT COMPONENT
         return (
             <>
             <div class="search-bar-section">
@@ -123,7 +129,7 @@ export default class SearchWidget extends Component {
                         }
                     {this.state.error ? 
                     <div class="error-wrapper">
-                        <p>Unable to simulate exchange data. Please try a different pair</p>
+                        <p>{this.state.error}</p>
                     </div> : null }
                     </div>
                     { this.state.overview? 

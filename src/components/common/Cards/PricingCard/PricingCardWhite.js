@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Ellipse1 from '../../../../assets/misc/Ellipse-267_1Ellipse 267.png';
 import Ellipse2 from '../../../../assets/misc/Ellipse-272_1Ellipse 272.png';
 
@@ -12,11 +13,11 @@ export default function PricingCardWhite() {
               <div class="pricing-number">$0</div>
               <div class="permonth">per month</div>
             </div>
-            <a href="sign-up.html" class="signup_button_dark pricing link-block-2 w-inline-block">
+            <Link to="/signup" class="signup_button_dark pricing link-block-2 w-inline-block">
               <div class="exchange_button_interior">
                 <p class="demo_text">Get started</p>
               </div>
-            </a>
+            </Link>
             <div class="pricing-description">For the crypto investor who trades occasionally. </div>
             <div class="pricing-bullets-container">
               <div class="pricing-bullet">

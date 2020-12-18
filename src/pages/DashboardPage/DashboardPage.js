@@ -15,6 +15,3 @@ export default function DashboardPage(props) {
         </>
     )
 }
-
-
-// Nested route for dashboard/account page
