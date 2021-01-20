@@ -4,7 +4,7 @@ export default class LiquidityService {
     BASE_URL = config.API_BASE_URL;
 
     async autoFill(input) {
-        const url = `${this.BASE_URL}/autofill/suggest/${input}`;
+        const url = `${this.BASE_URL}/autofill/suggest/${input}/`;
         const autoFillData = fetch(url)
             .then((res) => {
               if (!res.ok) {

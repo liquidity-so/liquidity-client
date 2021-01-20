@@ -18,7 +18,7 @@ export default function ResultContainerItem(props) {
                 <div class="results_text">{Normalize.normalizeDollarAmount(props.cost)}</div>
               </div>
               <div class="div-block-110">
-                <div class="results_text">{Normalize.normalizeDollarAmount(props.wap)}</div>
+                <div class="results_text">{props.wap}</div>
               </div>
               <div class="div-block-110 keep">
                 <div class="results_text">{Normalize.normalizeDollarAmount(props.total)}</div>
