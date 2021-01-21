@@ -15,13 +15,13 @@ export default function ResultContainerItem(props) {
                 <div class="results_text">{props.pi}</div>
               </div>
               <div class="div-block-110 hide-on-mobile">
-                <div class="results_text">{Normalize.normalizeDollarAmount(props.cost)}</div>
+                <div class="results_text">{Normalize.addDollarSymbol(props.cost)}</div>
               </div>
               <div class="div-block-110">
-                <div class="results_text">{props.wap}</div>
+                <div class="results_text">{Normalize.addDollarSymbol(props.wap)}</div>
               </div>
               <div class="div-block-110 keep">
-                <div class="results_text">{Normalize.normalizeDollarAmount(props.total)}</div>
+                <div class="results_text">{Normalize.addDollarSymbol(props.total)}</div>
               </div>
             </div>
         </a>
