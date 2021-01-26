@@ -6,11 +6,11 @@ const generateLinkTemplatefromColumn = (linkObjArr) => {
   return linkObjArr.map(footerLink => {   
       return (
         footerLink.external?  
-        <a href={footerLink.link} target="_blank" class="footer_text_link w-inline-block">
-          <div class="footer_text_link">{footerLink.title}</div>
+        <a href={footerLink.link} target="_blank" className="footer_text_link w-inline-block" key={footerLink.title}>
+          <div className="footer_text_link">{footerLink.title}</div>
         </a> :
-        <Link to={footerLink.link} class="footer_text_link w-inline-block">
-          <div class="footer_text_link">{footerLink.title}</div>
+        <Link to={footerLink.link} className="footer_text_link w-inline-block" key={footerLink.title}>
+          <div className="footer_text_link">{footerLink.title}</div>
         </Link>)
     })
 }
@@ -64,31 +64,31 @@ export default function Footer() {
 
 
     return (
-      <div class="footer-section">
-      <div class="footer_content w-container">
-        <div class="w-layout-grid grid-3">
-          <div class="div-block-50">
-            <Link to="/" aria-current="page" class="w-inline-block w--current">
-              <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></Link>
-            <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
-            <p class="footer_description">@ 2020 Liquidity.so</p>
+      <div className="footer-section">
+      <div className="footer_content w-container">
+        <div className="w-layout-grid grid-3">
+          <div className="div-block-50">
+            <Link to="/" aria-current="page" className="w-inline-block w--current">
+              <img src={LiquidityLogo} loading="lazy" width="92" alt="" className="logo"/></Link>
+            <p className="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
+            <p className="footer_description">@ 2020 Liquidity.so</p>
           </div>
-          <div class="footer_column">
-            <div class="footer_title">Product</div>
+          <div className="footer_column">
+            <div className="footer_title">Product</div>
             {generateLinkTemplatefromColumn(productColumn)}
           </div>
-          <div class="footer_column">
-            <div class="footer_title">Company</div>
+          <div className="footer_column">
+            <div className="footer_title">Company</div>
             {generateLinkTemplatefromColumn(companyColumn)}
           </div>
-          <div class="footer_column">
-            <div class="footer_title">Help &amp; Contact</div>
+          <div className="footer_column">
+            <div className="footer_title">Help &amp; Contact</div>
             {generateLinkTemplatefromColumn(helpColumn)}
           </div>
-          <div class="mobile"><a href="index.html" aria-current="page" class="w-inline-block w--current">
-            <img src={LiquidityLogo} loading="lazy" width="92" alt="" class="logo"/></a>
-            <p class="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
-            <p class="footer_description">@ 2020 Liquidity.so</p>
+          <div className="mobile"><a href="index.html" aria-current="page" className="w-inline-block w--current">
+            <img src={LiquidityLogo} loading="lazy" width="92" alt="" className="logo"/></a>
+            <p className="footer_description">Your one stop-shop to find the best prices and ancipate trading costs. </p>
+            <p className="footer_description">@ 2020 Liquidity.so</p>
           </div>
         </div>
       </div>

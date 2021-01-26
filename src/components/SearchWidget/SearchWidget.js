@@ -27,6 +27,7 @@ export default class SearchWidget extends Component {
         if (!results || !summary) {
             this.setState({
                 ...this.state,
+                progress: 0,
                 error: 'Unable to simulate exchange data. Please try a different pair',
                 loading: false
             })
@@ -36,7 +37,8 @@ export default class SearchWidget extends Component {
                 ...this.state,
                 results: results,
                 overview: summary,
-                loading: false
+                loading: false,
+                progress: 0,
             })
         }
     }
@@ -44,12 +46,16 @@ export default class SearchWidget extends Component {
         this.setState({
             ...this.state,
             loading: true,
-            error: null
+            error: null,
+            results: null,
+            overview: null,
+            progress: 0
         })
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
     setProgressBar = () => {
-        let increment = this.state.progress += (2 + Math.random() * 20)
+        let currentState = this.state.progress
+        let increment = currentState += (2 + Math.random() * 20)
         // If progress bar is at 95, don't increase until pair data is received
         if (increment >= 90) {
             return
@@ -87,19 +93,19 @@ export default class SearchWidget extends Component {
     render() {
         return (
             <>
-            <div class="search-bar-section">
-                <div class="search-results-container sw-wrapper" >
-                    <div class="search-box-title-box">
-                        <img src={SineWaveIcon} loading="lazy" width="48" alt="" class="sine_wave"/>
-                        <div class="find-the-best-price-text">Find the best price</div>
-                        <div class="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
+            <div className="search-bar-section">
+                <div className="search-results-container sw-wrapper" >
+                    <div className="search-box-title-box">
+                        <img src={SineWaveIcon} loading="lazy" width="48" alt="" className="sine_wave"/>
+                        <div className="find-the-best-price-text">Find the best price</div>
+                        <div className="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
                     </div>
                     <SearchBar 
                         onSearchFinished ={this.setFinishedStatus} 
                         onSearch={this.createLoadingEffect} 
                         homepage = {this.props.homepage ? true: false}
                     />
-                    <div class={this.state.loading ? 
+                    <div className={this.state.loading ? 
                      "search-results-section sresults-section loading-wrapper"
                     :"search-results-section sresults-section"}>
                     { this.state.overview? 
@@ -110,7 +116,7 @@ export default class SearchWidget extends Component {
                             hidden={true}/>
                         : null
                     } 
-                    <div class={this.state.loading ? 
+                    <div className={this.state.loading ? 
                         "search_results_container sw-container loading-wrapper"
                         : "search_results_container sw-container"}>
                         { this.state.results ? 
@@ -128,7 +134,7 @@ export default class SearchWidget extends Component {
                             : null
                         }
                     {this.state.error ? 
-                    <div class="error-wrapper">
+                    <div className="error-wrapper">
                         <p>{this.state.error}</p>
                     </div> : null }
                     </div>

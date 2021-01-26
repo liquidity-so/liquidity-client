@@ -4,30 +4,30 @@ import Ellipse1 from '../../../../assets/misc/Ellipse-267_1Ellipse 267.png';
 // Ideally we pass the blacak or white design as a prop.
 export default function PricingCardBlk() {
     return (
-        <div class="paid_tier-card">
-        <h1 class="heading-3">Trader</h1>
-        <div class="price">
-          <div class="pricing-number">$150</div>
-          <div class="permonth">per month</div>
+        <div className="paid_tier-card">
+        <h1 className="heading-3">Trader</h1>
+        <div className="price">
+          <div className="pricing-number">$150</div>
+          <div className="permonth">per month</div>
         </div>
-        <a href="https://app.tillypay.com/pay/liquidity" class="sign_up_button-paid w-inline-block">
+        <a href="https://app.tillypay.com/pay/liquidity" className="sign_up_button-paid w-inline-block">
           <div>
-            <div class="get-started-text">Get started</div>
+            <div className="get-started-text">Get started</div>
           </div>
         </a>
-        <div class="pricing-description">For professional traders and researchers.</div>
-        <div class="pricing-bullets-container">
-          <div class="pricing-bullet">
-            <img src={Ellipse1} loading="lazy" alt="" class="bullet_color"/>
-            <div class="pricing_bullet_text">Unlimited search volume</div>
+        <div className="pricing-description">For professional traders and researchers.</div>
+        <div className="pricing-bullets-container">
+          <div className="pricing-bullet">
+            <img src={Ellipse1} loading="lazy" alt="" className="bullet_color"/>
+            <div className="pricing_bullet_text">Unlimited search volume</div>
           </div>
-          <div class="pricing-bullet">
-            <img src={Ellipse1} loading="lazy" alt="" class="bullet_color"/>
-            <div class="pricing_bullet_text">XLS export</div>
+          <div className="pricing-bullet">
+            <img src={Ellipse1} loading="lazy" alt="" className="bullet_color"/>
+            <div className="pricing_bullet_text">XLS export</div>
           </div>
-          <div class="pricing-bullet">
-            <img src={Ellipse1}loading="lazy" alt="" class="bullet_color"/>
-            <div class="pricing_bullet_text">Priority support</div>
+          <div className="pricing-bullet">
+            <img src={Ellipse1}loading="lazy" alt="" className="bullet_color"/>
+            <div className="pricing_bullet_text">Priority support</div>
           </div>
         </div>
       </div>

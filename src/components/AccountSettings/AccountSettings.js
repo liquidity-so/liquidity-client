@@ -19,32 +19,32 @@ class AccountSettings extends Component{
     }
     render() {
     return ( 
-    <div class="search-bar-section">
-    <div class="div-block-86">
-        <div class="settings_side_bar">
-        <h1 class="heading-6">Settings</h1>
+    <div className="search-bar-section">
+    <div className="div-block-86">
+        <div className="settings_side_bar">
+        <h1 className="heading-6">Settings</h1>
         <Link to={`${this.props.match.url}`} 
             onClick={() => this.setActive('Account')} 
-            class={this.state.active === "Account" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
-            <div class="text-block-15">Account</div>
+            className={this.state.active === "Account" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
+            <div className="text-block-15">Account</div>
         </Link>
         <Link to={`${this.props.match.url}/password`} 
             onClick={() => this.setActive('Password')} 
-            class={this.state.active === "Password" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
-            <div class="text-block-15">Password</div>
+            className={this.state.active === "Password" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
+            <div className="text-block-15">Password</div>
         </Link>
         <Link to={`${this.props.match.url}/usage`} 
             onClick={() =>  this.setActive('Usage')} 
-            class={this.state.active === "Usage" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
-            <div class="text-block-15">Usage</div>
+            className={this.state.active === "Usage" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
+            <div className="text-block-15">Usage</div>
         </Link>
         <Link to={`${this.props.match.url}/billing`} 
             onClick={() => this.setActive('Billing')} 
-            class={this.state.active === "Billing" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
-            <div class="text-block-15">Billing</div>
+            className={this.state.active === "Billing" ? "active_sidebar_button w-inline-block w--current" :"inactive_sidebar_button w-inline-block" }>
+            <div className="text-block-15">Billing</div>
         </Link>
         </div>
-        <div class="settings-card parameters">
+        <div className="settings-card parameters">
             <Route exact path={this.props.match.url + "/"} component={AccountGeneral}/>
             <Route exact path={this.props.match.url + "/password"} component={AccountPassword}/>
             <Route exact path={this.props.match.url + "/usage"} component={AccountUsage}/>

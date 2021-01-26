@@ -35,7 +35,6 @@ class OnboardingForm extends Component {
             password: this.state.password,
             username: this.state.username
         })
-        console.log(newUser);
     } 
     onChangePasswordConfirm = (value) => {
         this.setCredentials(value, "confirmPass")
@@ -110,34 +109,34 @@ class OnboardingForm extends Component {
     }
     render() {
         return (
-            <div class="account_setup-section">
-            <div class="signup-signin-section-container custom w-container">
-            <div class="div-block-129">
-                <h2 class="heading-3 fds">Welcome to Liquidity</h2>
-                <div class="text-block-100">First things first, tell us a little about yourself</div>
+            <div className="account_setup-section">
+            <div className="signup-signin-section-container custom w-container">
+            <div className="div-block-129">
+                <h2 className="heading-3 fds">Welcome to Liquidity</h2>
+                <div className="text-block-100">First things first, tell us a little about yourself</div>
             </div>
-            <div class="sign-up-in-container">
+            <div className="sign-up-in-container">
               
-                <div class="email-input-field-button-container">
-                <div class="input_field_header">Username</div>
+                <div className="email-input-field-button-container">
+                <div className="input_field_header">Username</div>
                 <input 
-                    class="email-input-field-sign-up-sign-in custom" 
+                    className="email-input-field-sign-up-sign-in custom" 
                     placeholder="@satoshinakamoto"
                     onChange={(e) => this.onChangeUserName(e.target.value)}
                 />
-                <div class="input_field_header">Set password</div>
+                <div className="input_field_header">Set password</div>
                 <input  
                     type="password"
-                    class="email-input-field-sign-up-sign-in" 
+                    className="email-input-field-sign-up-sign-in" 
                     placeholder="New Password" 
                     onChange={(e) => this.onChangePassword(e.target.value)}/>
-                <div class="input_field_header">Confirm password</div>
+                <div className="input_field_header">Confirm password</div>
                 <input  
                     type="password"
-                    class="email-input-field-sign-up-sign-in" 
+                    className="email-input-field-sign-up-sign-in" 
                     placeholder="Confirm Password" 
                     onChange={(e) => this.onChangePasswordConfirm(e.target.value)}/>
-                <div class="div-block-126"></div>
+                <div className="div-block-126"></div>
                 {
                     this.state.error ? 
                     <div className="onboard-status-block">
@@ -145,15 +144,15 @@ class OnboardingForm extends Component {
                     </div> 
                     : null
                 }
-                <div class="email_button w-inline-block"  onClick={e => this.handleCreateNewUser(e)}>
-                    <div class="text-block-7">Continue</div>
+                <div className="email_button w-inline-block"  onClick={e => this.handleCreateNewUser(e)}>
+                    <div className="text-block-7">Continue</div>
                 </div>
             
                 </div>
          
                 </div>
-                <div class="text-block-88">You&#x27;re currently logged in as <span class="text-span-9">{this.state.email}</span>. <br/>If you don&#x27;t intend to set up a new account, you can
-                <Link to="/login" class="link-5"> log in with another email</Link>.</div>
+                <div className="text-block-88">You&#x27;re currently logged in as <span className="text-span-9">{this.state.email}</span>. <br/>If you don&#x27;t intend to set up a new account, you can
+                <Link to="/login" className="link-5"> log in with another email</Link>.</div>
                 </div>
             </div>
         );
@@ -162,8 +161,8 @@ class OnboardingForm extends Component {
 export default withRouter(OnboardingForm);
 
 /* UNUSED FOR NOW, THIS GOES RIGHT BELOW ".sign-up-in-container"
-  <div class="div-block-128">
-                    <img src="images/Frame-22.png" loading="lazy" width="80" alt="" class="signup_avatar"></img>
-                    <div class="signup_avatar_button">Add a photo</div>
+  <div className="div-block-128">
+                    <img src="images/Frame-22.png" loading="lazy" width="80" alt="" className="signup_avatar"></img>
+                    <div className="signup_avatar_button">Add a photo</div>
                 </div>
 */

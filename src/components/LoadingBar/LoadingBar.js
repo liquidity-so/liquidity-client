@@ -10,7 +10,7 @@ export default function LoadingBar(props) {
         <>
             <div className="progress-container">
                 <div className="status-container">
-                    <div class="loading-indicator">
+                    <div className="loading-indicator">
                         <HashLoader
                             size={17}
                             //width={"100%"}

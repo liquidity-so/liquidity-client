@@ -18,31 +18,31 @@ export default function ExchangePage() {
         <>
         <NavBar/>       
         <div>
-            <div class="exchanges_container w-container">
-                <div class="product-hero-container">
-                    <img src={BLACKBOX_IMG} loading="lazy" width="138" height="64" alt="" class="exchange-image"/>
-                    <h2 class="heading_h2">Exchanges</h2>
-                    <div class="subtitle hero">Over 50+ exchanges supported.</div>
-                    <Link to="/signup" class="signup_button w-inline-block">
-                    <div class="exchange_button_interior">
-                        <p class="say_hi_text">Get started</p>
+            <div className="exchanges_container w-container">
+                <div className="product-hero-container">
+                    <img src={BLACKBOX_IMG} loading="lazy" width="138" height="64" alt="" className="exchange-image"/>
+                    <h2 className="heading_h2">Exchanges</h2>
+                    <div className="subtitle hero">Over 50+ exchanges supported.</div>
+                    <Link to="/signup" className="signup_button w-inline-block">
+                    <div className="exchange_button_interior">
+                        <p className="say_hi_text">Get started</p>
                     </div>
                     </Link>
                 </div>
             </div>
         </div>
-        <div class="container_grid w-container">
-            <div class="w-layout-grid grid-18">
+        <div className="container_grid w-container">
+            <div className="w-layout-grid grid-18">
                 {exchangesGridTemplate}
             </div>
         </div>
-        <div class="section-14">
-            <div class="video-container customshit w-container">
-                <div class="call_to_action">
-                    <h1 class="heading_h1 call_to_action">Save on your next trade.</h1>
-                    <Link to="/signup" class="signup_button_dark w-inline-block">
-                    <div class="exchange_button_interior">
-                        <p class="demo_text">Get started</p>
+        <div className="section-14">
+            <div className="video-container customshit w-container">
+                <div className="call_to_action">
+                    <h1 className="heading_h1 call_to_action">Save on your next trade.</h1>
+                    <Link to="/signup" className="signup_button_dark w-inline-block">
+                    <div className="exchange_button_interior">
+                        <p className="demo_text">Get started</p>
                     </div>
                     </Link>
                 </div>

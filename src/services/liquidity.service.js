@@ -52,8 +52,6 @@ export default class LiquidityService {
         });
     }
     async loginUser(userCredentials = {username: String, password: String}) {
-        console.log(userCredentials);
-        console.log(JSON.stringify(userCredentials))
         const url =  `${this.BASE_URL}/api-token-auth/`;
         const authToken = fetch(url,
             {  

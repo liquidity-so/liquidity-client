@@ -6,18 +6,18 @@ import './NavBar.css'
 
 export default function NavBar() {
     return (
-        <div data-collapse="small" data-animation="default" data-duration="0" role="banner" class="navbar w-nav">
+        <div data-collapse="small" data-animation="default" data-duration="0" role="banner" className="navbar w-nav">
         <div className="nav-bar-container w-container">
       <Link to="/" className="customstay w-nav-brand w--current">
         <div className="div-block-33 customstay">
-            <img src={LiquidityLogo} width="96" alt="" class="image customstay"/>
+            <img src={LiquidityLogo} width="96" alt="" className="image customstay"/>
         </div>
       </Link>
       <Link to="/" className="nav-bar-logo-block w-inline-block w--current">
-          <img src={LiquidityLogo}  width="96" alt="" class="nav-bar-logo"/>
+          <img src={LiquidityLogo}  width="96" alt="" className="nav-bar-logo"/>
       </Link>
       <nav role="navigation" className="nav-menu w-nav-menu">
-        <div class="nav-bar-links-container">
+        <div className="nav-bar-links-container">
       <Link to="/product" className="the-nav-link w-nav-link">
           Product
       </Link>
