@@ -15,9 +15,9 @@ export default function ResultCard(props) {
     const comingSoonResults = 
     <>
         <div className="title main">Price</div>
-        <div className="title data coming-soon-text"><i>Coming Soon</i></div>
+        <div className="title data coming-soon-text"><i>N/A</i></div>
         <div className="title main">Change</div>
-        <div className="title data coming-soon-text"><i>Coming Soon</i></div>
+        <div className="title data coming-soon-text"><i>N/A</i></div>
     </>
 
     const strDateTime = props.data.time;

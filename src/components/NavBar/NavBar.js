@@ -5,7 +5,7 @@ import './NavBar.css'
 
 
 export default function NavBar() {
-  const betaNav = <Link className="the-nav-link log-in w-nav-link">Liquidity Beta</Link>
+  const betaNav = <span className="beta-text">Liquidity Beta</span>
   const loginNav =  
   <>
     <Link to="/login" className="the-nav-link log-in w-nav-link">Log in</Link>
