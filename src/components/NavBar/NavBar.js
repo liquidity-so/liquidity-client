@@ -5,6 +5,12 @@ import './NavBar.css'
 
 
 export default function NavBar() {
+  const betaNav = <Link className="the-nav-link log-in w-nav-link">Liquidity Beta</Link>
+  const loginNav =  
+  <>
+    <Link to="/login" className="the-nav-link log-in w-nav-link">Log in</Link>
+    <Link to="/signup" className="the-nav-link sign-up w-nav-link">Sign up</Link>
+  </>
     return (
         <div data-collapse="small" data-animation="default" data-duration="0" role="banner" className="navbar w-nav">
         <div className="nav-bar-container w-container">
@@ -24,9 +30,9 @@ export default function NavBar() {
       <Link to="/pricing" className="the-nav-link w-nav-link">
           Pricing
       </Link>
-          <div className="nav_bar_separator"></div>
-        <Link to="/login" className="the-nav-link log-in w-nav-link">Log in</Link>
-        <Link to="/signup" className="the-nav-link sign-up w-nav-link">Sign up</Link></div>
+        <div className="nav_bar_separator"></div>
+          {betaNav}
+        </div>
       </nav>
       <div className="menu-button w-nav-button">
         <div className="w-icon-nav-menu"></div>

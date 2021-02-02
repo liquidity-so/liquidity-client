@@ -19,6 +19,37 @@ import PublicOnlyRoute from './utils/PublicOnlyRoute';
 function App() {
   // Home Page, Product should be public only 
   // Dashboard, Account is private only
+  const nonBetaRoutes = 
+  <>
+      <PublicOnlyRoute 
+        path={"/welcome"}
+        component={WelcomePage}></PublicOnlyRoute>
+      <PublicOnlyRoute 
+        path={"/login"}
+        component={LoginPage}></PublicOnlyRoute>
+      <PublicOnlyRoute 
+        path={"/signup"}
+        component={SignUpPage}></PublicOnlyRoute>
+        <PrivateRoute 
+        path={"/dashboard"}
+        component={DashboardPage}></PrivateRoute>
+  </>
+  const betaRoutes = 
+  <>
+  <PublicOnlyRoute 
+    path={"/welcome"}
+    component={HomePage}></PublicOnlyRoute>
+  <PublicOnlyRoute 
+    path={"/login"}
+    component={HomePage}></PublicOnlyRoute>
+  <PublicOnlyRoute 
+    path={"/signup"}
+    component={HomePage}></PublicOnlyRoute>
+  <PrivateRoute 
+    path={"/dashboard"}
+    component={HomePage}></PrivateRoute>
+  </>
+
   return (
     <>
       <ScrollToTop />
@@ -37,18 +68,7 @@ function App() {
       <PublicOnlyRoute 
         exact path={"/"}
         component={HomePage}></PublicOnlyRoute>
-      <PublicOnlyRoute 
-        path={"/login"}
-        component={LoginPage}></PublicOnlyRoute>
-      <PublicOnlyRoute 
-        path={"/signup"}
-        component={SignUpPage}></PublicOnlyRoute>
-      <PublicOnlyRoute 
-        path={"/welcome"}
-        component={WelcomePage}></PublicOnlyRoute>
-      <PrivateRoute 
-        path={"/dashboard"}
-        component={DashboardPage}></PrivateRoute>
+      {betaRoutes}
     </>
   );
 }

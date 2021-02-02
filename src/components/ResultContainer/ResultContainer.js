@@ -11,7 +11,7 @@ export default function ResultContainer(props) {
                 url={result.url} 
                 exImg={result.img} 
                 exName={result.name}
-                pi={result.pi}
+                pi={i + 1}
                 cost={result.cost}
                 wap={result.wap}
                 total={result.total}
@@ -57,7 +57,8 @@ export default function ResultContainer(props) {
               </div>
             </div>
           {results}
-          {signUpBanner}
         </>
     )
 }
+
+// When beta is finished, add {signUpBanner} below results
