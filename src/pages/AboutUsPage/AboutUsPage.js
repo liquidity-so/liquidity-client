@@ -2,6 +2,10 @@ import React from 'react'
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
 import TeamMember from '../../components/TeamMember/TeamMember';
+import {ALFONSO_LG, SPIRO_LG, VINCENT_LG} from '../../assets/team';
+const SVF_LOGO_SM = require('../../assets/logos/SVF_SM.png');
+const SVF_LOGO_M= require('../../assets/logos/SVF_M.png');
+const SVF_LOGO_LG= require('../../assets/logos/SVF_LG.png');
 
 export default function AboutUsPage(){
     const teamMembers = [
@@ -12,21 +16,21 @@ export default function AboutUsPage(){
                 linkedin: 'https://www.linkedin.com/in/alfonsorodz/',
                 twitter: 'https://twitter.com/alfonsomlrodz'
             },
-            img: '',
+            img: ALFONSO_LG,
         },
         {
             name: 'Spyridon Coffinas',
             title: 'Software Engineer',
             socials: {
             },
-            img: '',
+            img: SPIRO_LG,
         },
         {
             name: 'Vincent Caliendo',
             title: 'Software Engineer',
             socials: {
             },
-            img: '',
+            img: VINCENT_LG,
         },
     ];
     const teamMembersTemplate = teamMembers.map(member => {
@@ -64,9 +68,9 @@ export default function AboutUsPage(){
             <div className="backed-by-container w-container">
             <h1 className="heading_h1 call_to_action">Backed by</h1>
             <a href="https://www.sternventurefellows.com/" target="_blank" className="backed-by-link-block w-inline-block">
-                <img src="images/design-1ab0c92d-3f54-4427-b137-7c1e4385c1d6.png" loading="lazy" width="178" sizes="100px" 
-                srcSet="images/design-1ab0c92d-3f54-4427-b137-7c1e4385c1d6-p-500.png 500w, images/design-1ab0c92d-3f54-4427-b137-7c1e4385c1d6-p-800.png 800w, 
-                images/design-1ab0c92d-3f54-4427-b137-7c1e4385c1d6.png 958w" alt="" className="svf-image"/>
+                <img src={SVF_LOGO_LG} loading="lazy" width="178" sizes="100px" 
+                srcSet={`${SVF_LOGO_SM} 500w, ${SVF_LOGO_M} 800w, 
+                i ${SVF_LOGO_LG} 958w`} alt="Stern Venture Fellows" className="svf-image"/>
             </a>
             </div>
         </div>
