@@ -30,6 +30,7 @@ export default class LiquidityService {
                 }
                 return res.json();
             })
+            console.log(exchangeData);
             return exchangeData;
     }
     // USER ENDPOINTS

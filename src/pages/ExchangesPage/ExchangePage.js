@@ -20,7 +20,6 @@ export default function ExchangePage() {
         <div>
             <div className="exchanges_container w-container">
                 <div className="product-hero-container">
-                    <img src={BLACKBOX_IMG} loading="lazy" width="138" height="64" alt="" className="exchange-image"/>
                     <h2 className="heading_h2">Exchanges</h2>
                     <div className="subtitle hero">Over 50+ exchanges supported.</div>
                     <Link to="/signup" className="signup_button w-inline-block">

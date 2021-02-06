@@ -24,10 +24,12 @@ export default function Footer() {
       title: "Exchanges",
       link: "/exchanges"
     },
+    /* UNUSED FOR BETA VERSION
     {
       title: "Pricing",
       link: "/pricing"
     }
+    */
   ]
   const companyColumn = [
     {
@@ -57,7 +59,8 @@ export default function Footer() {
     },
     {
       title: "Send us a message",
-      link: "/"
+      link: "mailto: alfonso@liquidity.so",
+      external: true
     }
   ]
 
