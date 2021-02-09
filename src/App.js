@@ -33,6 +33,9 @@ function App() {
         <PrivateRoute 
         path={"/dashboard"}
         component={DashboardPage}></PrivateRoute>
+        <Route 
+        path={"/pricing"}
+        render={() => <PricingPage/>}></Route>
   </>
   const betaRoutes = 
   <>
@@ -48,14 +51,14 @@ function App() {
   <PrivateRoute 
     path={"/dashboard"}
     component={HomePage}></PrivateRoute>
+  <Route 
+        path={"/pricing"}
+        component={HomePage}></Route>
   </>
 
   return (
     <>
       <ScrollToTop />
-      <Route 
-        path={"/pricing"}
-        render={() => <PricingPage/>}></Route>
       <Route 
         path={"/product"}
         render={() => <ProductPage/>}></Route>

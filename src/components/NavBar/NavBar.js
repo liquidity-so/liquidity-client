@@ -5,6 +5,11 @@ import './NavBar.css'
 
 
 export default function NavBar() {
+
+  const pricingLink = 
+  <Link to="/pricing" className="the-nav-link w-nav-link">
+    Pricing
+  </Link>
   const betaNav = <span className="beta-text">Liquidity Beta</span>
   const loginNav =  
   <>
@@ -27,9 +32,6 @@ export default function NavBar() {
       <Link to="/product" className="the-nav-link w-nav-link">
           Product
       </Link>
-      <Link to="/pricing" className="the-nav-link w-nav-link">
-          Pricing
-      </Link>
         <div className="nav_bar_separator"></div>
           {betaNav}
         </div>
@@ -41,3 +43,7 @@ export default function NavBar() {
   </div>
     )
 }
+
+/*
+
+*/
