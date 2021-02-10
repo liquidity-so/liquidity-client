@@ -11,10 +11,10 @@ export default function ResultContainer(props) {
                 url={result.url} 
                 exImg={result.img} 
                 exName={result.name}
-                pi={i + 1}
                 cost={result.cost}
                 wap={result.wap}
                 total={result.total}
+                bps={result.bps}
             />
         )
     })

@@ -100,7 +100,7 @@ export default class SearchBar extends Component{
     const token = auth ? auth : null;
     this.props.onSearch();
     const results = await this.LiquidityApi.simulateExchange(coin1, coin2, orderSize, type, token)
-    console.log(results);
+    
     this.props.onSearchFinished(results);
   }
 

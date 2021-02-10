@@ -10,7 +10,7 @@ export default function ResultContainerItem(props) {
                 <div className="text-block-78 exchange-name">{props.exName}</div>
               </div>
               <div className="div-block-110 hide-on-mobile">
-                <div className="results_text">{props.pi}</div>
+                <div className="results_text">{props.bps}</div>
               </div>
               <div className="div-block-110 hide-on-mobile">
                 <div className="results_text">{props.cost}</div>
