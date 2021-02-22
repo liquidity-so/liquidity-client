@@ -2,7 +2,8 @@ import React from 'react'
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
 import TeamMember from '../../components/TeamMember/TeamMember';
-import {ALFONSO_LG, SPIRO_LG, VINCENT_LG} from '../../assets/team';
+import {ALFONSO_LG, SPIRO_LG, VINCENT_LG, MIGUEL_LG} from '../../assets/team';
+import "./AboutUsPage.css";
 const SVF_LOGO_SM = require('../../assets/logos/SVF_SM.png');
 const SVF_LOGO_M= require('../../assets/logos/SVF_M.png');
 const SVF_LOGO_LG= require('../../assets/logos/SVF_LG.png');
@@ -31,15 +32,17 @@ export default function AboutUsPage(){
             socials: {
             },
             img: VINCENT_LG,
-        },
+        }
     ];
-    const teamMembersTemplate = teamMembers.map(member => {
-        return <TeamMember 
+    const teamMembersTemplate = teamMembers.map((member, i) => {
+        return (
+        <TeamMember
+            key={i}
             memberName={member.name} 
             memberImg={member.img}
             memberTitle={member.title} 
             socialLinks={member.socials}
-        />
+        />)
     })
 
     return (
@@ -68,9 +71,9 @@ export default function AboutUsPage(){
             <div className="backed-by-container w-container">
             <h1 className="heading_h1 call_to_action">Backed by</h1>
             <a href="https://www.sternventurefellows.com/" target="_blank" className="backed-by-link-block w-inline-block">
-                <img src={SVF_LOGO_LG} loading="lazy" width="178" sizes="100px" 
+                <img src={SVF_LOGO_LG} loading="lazy" width="178"
                 srcSet={`${SVF_LOGO_SM} 500w, ${SVF_LOGO_M} 800w, 
-                i ${SVF_LOGO_LG} 958w`} alt="Stern Venture Fellows" className="svf-image"/>
+                ${SVF_LOGO_LG} 958w`} alt="Stern Venture Fellows" className="svf-image"/>
             </a>
             </div>
         </div>

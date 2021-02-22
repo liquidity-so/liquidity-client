@@ -9,9 +9,9 @@ export default function TeamMember(props){
     let socials = Object.keys(props.socialLinks);
     if (socials.length) {
         socialLinksTemplate = socials
-        .map(key => {
+        .map((key, i) => {
             return (
-            <a href={props.socialLinks.key} target="_blank" className="link-block-3 w-inline-block">
+            <a key={i} href={props.socialLinks.key} target="_blank" className="link-block-3 w-inline-block">
                 <img src={mapSocialsToImage(key)} loading="lazy" alt="" className="team-member"/>
             </a>);
         })

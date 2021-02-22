@@ -12,3 +12,16 @@
     cursor: default;
   }
   
+
+.menu-button .w-nav-button {
+  -webkit-user-select: text;
+}
+
+.w-nav-overlay {
+  height: 4104.42px; 
+  display: block;
+}
+.nav-menu .w-nav-menu {
+  transform: translateY(0px) translateX(0px); 
+  transition: transform 0ms ease 0s;
+}
