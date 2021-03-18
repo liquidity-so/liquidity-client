@@ -14,3 +14,4 @@ export const SPLASH_CUT_COSTS_IMG_800 = require('./control_800.png');
 export const SPLASH_SAVE_BEFORE_IMG_1080 = require('./explore_1080.png');
 export const SPLASH_CUT_COSTS_IMG_1080 = require('./control_1080.png');
 
+export const SPLASH_SELL = require('./sell.png');

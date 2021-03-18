@@ -7,7 +7,7 @@ import PLATFORM_IMG_500 from '../../assets/misc/Platform-p-500.png';
 import PLATFORM_IMG_800 from '../../assets/misc/Platform-p-800.png';
 import PLATFORM_IMG_1080 from '../../assets/misc/Platform-p-1080.png';
 import PLATFORM_IMG_1600 from '../../assets/misc/Platform-p-1600.png';
-
+import {SPLASH_CUT_COSTS_IMG, SPLASH_CUT_COSTS_IMG_500, SPLASH_CUT_COSTS_IMG_800, SPLASH_CUT_COSTS_IMG_1080, SPLASH_SELL} from '../../assets/splash';
 export default class ProductPage extends Component{
 
     //TODO: Refactor to functional component with hooks
@@ -60,8 +60,6 @@ export default class ProductPage extends Component{
             </div>
           </div>
         </div>
-        <img src="images/Lil-Box.png" loading="lazy" sizes="100vw" 
-        srcSet="images/Lil-Box-p-500.png 500w, images/Lil-Box-p-800.png 800w, images/Lil-Box.png 806w" alt="" className="image-30"></img>
         </div>
     </div>
     <div className="container_calculator customcalc w-container">
@@ -79,7 +77,6 @@ export default class ProductPage extends Component{
         <div id="w-node-274447c22b55-7647ea94" className="calculator">
           <div className="html-embed script w-embed w-script">
             <div className="calculator" data-calc-id="43HmsvKsGvjkrsWpz"></div>
-   
             </div>
         </div>
       </div>
@@ -91,8 +88,8 @@ export default class ProductPage extends Component{
         </div>
       </Link>
       <p className="paragraph_product dark_background">Discover the <span className="text-span-12">most cost effective exchange</span> for your trade and know if your order can be filled. </p>
-      <img src="images/Dark_Rectangle.png" loading="lazy" sizes="(max-width: 767px) 80vw, 100vw" 
-      srcSet="images/Dark_Rectangle-p-500.png 500w, images/Dark_Rectangle-p-800.png 800w, images/Dark_Rectangle-p-1080.png 1080w, images/Dark_Rectangle.png 1560w" alt="" className="product-image"></img>
+      <img src={SPLASH_CUT_COSTS_IMG} loading="lazy" sizes="(max-width: 767px) 80vw, 100vw"
+      srcSet={`${SPLASH_CUT_COSTS_IMG_500} 500w, ${SPLASH_CUT_COSTS_IMG_800} 800w, ${SPLASH_CUT_COSTS_IMG_1080} 1080w, ${SPLASH_CUT_COSTS_IMG} 1560w`} alt="" className="product-image"></img>
       </div>
     <div className="container_product mitigate w-container">
       <Link to="/signup" target="_blank" className="mini_title red w-inline-block">
@@ -101,8 +98,8 @@ export default class ProductPage extends Component{
         </div>
       </Link>
       <p className="paragraph_product dark_background">Keep track of your portfolio’s liquidity and <span className="text-span-13">anticipate trading costs.</span> Avoid fat fingering and potential slippage.</p>
-      <img src="images/Dark_Rectangle.png" loading="lazy" sizes="(max-width: 767px) 80vw, 100vw" 
-      srcSet="images/Dark_Rectangle-p-500.png 500w, images/Dark_Rectangle-p-800.png 800w, images/Dark_Rectangle-p-1080.png 1080w, images/Dark_Rectangle.png 1560w" alt="" className="product-image"></img>
+      <img src={SPLASH_SELL} loading="lazy" 
+      alt="" className="product-image"></img>
       </div>
   </div>
   <div>

@@ -93,7 +93,7 @@ export default class SearchWidget extends Component {
     render() {
         return (
             <>
-            <div className="search-bar-section">
+            <div className={`search-bar-section ${this.props.homepage? "home-search" : ""}`}>
                 <div className="search-results-container sw-wrapper" >
                     <div className="search-box-title-box">
                         <img src={SineWaveIcon} loading="lazy" width="48" alt="" className="sine_wave"/>

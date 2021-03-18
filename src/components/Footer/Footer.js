@@ -53,8 +53,8 @@ export default function Footer() {
       link: "/product"
     },
     {
-      title: "Discord",
-      link: "https://discord.gg/TNQX5ea",
+      title: "Telegram",
+      link: "https://t.me/joinchat/8JNVFOvev1s5ZDdh",
       external: true
     },
     {
