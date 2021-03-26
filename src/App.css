@@ -1,3 +1,13 @@
+.product-hunt-link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1.33em 1.66em;
+}
+.product-hunt-link img {
+  max-width: 175px;
+}
+
 html {
   max-width: 100vw !important;
   overflow-x: hidden;
@@ -4652,6 +4662,12 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .product-hunt-link {
+    margin: 0.25em 0.75em;
+  }
+  .product-hunt-link img {
+    max-width: 120px;
+  }
   .heading_h1.home {
     margin-bottom: 0px;
     line-height: 140%;

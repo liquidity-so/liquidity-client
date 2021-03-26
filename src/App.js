@@ -72,6 +72,13 @@ function App() {
         exact path={"/"}
         component={HomePage}></PublicOnlyRoute>
       {betaRoutes}
+      <a className='product-hunt-link' href=
+        'https://www.producthunt.com/posts/liquidity-so-3?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-liquidity-so-3' target='_blank'>
+        <img src='https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=289651&theme=light' 
+        width={250} height={54}
+        alt='Liquidity.so - Skyscanner for cryptocurrency trading. | Product Hunt' 
+        style={{width: '250px', height: '54px'}}/>
+      </a>
     </>
   );
 }
