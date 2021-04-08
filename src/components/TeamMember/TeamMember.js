@@ -19,7 +19,7 @@ export default function TeamMember(props){
     return (
     <> 
         <div className="team-member-block">
-        <img src={props.memberImg} loading="lazy" width="171" alt="" className="team_member"/>
+        <img src={props.memberImg} loading="lazy" width="171" height="205" alt="" className="team_member"/>
         <div className="team_description_box">
             <div className="team_description">{props.memberName}</div>
             <div>{props.memberTitle}</div>

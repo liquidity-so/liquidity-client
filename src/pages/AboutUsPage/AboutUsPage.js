@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar'
 import TeamMember from '../../components/TeamMember/TeamMember';
-import {ALFONSO_LG, SPIRO_LG, VINCENT_LG, MIGUEL_LG} from '../../assets/team';
+import {ALFONSO_LG, SPIRO_LG, VINCENT_LG, MIGUEL_MD} from '../../assets/team';
 import "./AboutUsPage.css";
 const SVF_LOGO_SM = require('../../assets/logos/SVF_SM.png');
 const SVF_LOGO_M= require('../../assets/logos/SVF_M.png');
@@ -32,6 +32,13 @@ export default function AboutUsPage(){
             socials: {
             },
             img: VINCENT_LG,
+        },
+        {
+            name: 'Miguel Lorenzo',
+            title: 'Software Engineer',
+            socials: {
+            },
+            img: MIGUEL_MD,
         }
     ];
     const teamMembersTemplate = teamMembers.map((member, i) => {
