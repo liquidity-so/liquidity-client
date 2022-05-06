@@ -107,7 +107,7 @@ export default function HomePage() {
                 <iframe 
                 title="liquidity-how-it-works" 
                 className="embedly-embed" width="940" height="528" src="https://www.youtube.com/embed/GRTXBk9p9q8" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
                 </iframe>
             </div>
         </div>

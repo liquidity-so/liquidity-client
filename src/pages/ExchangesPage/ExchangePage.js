@@ -11,8 +11,8 @@ import ExchangeList from './_ExchangeList';
 
 export default function ExchangePage() {
     const exchangeList = ExchangeList;
-    const exchangesGridTemplate = exchangeList.map(exchange => {
-        return <ExchangeCell exchangeImg={exchange.img} name={exchange.name}/>
+    const exchangesGridTemplate = exchangeList.map((exchange, i) => {
+        return <ExchangeCell exchangeImg={exchange.img} name={exchange.name} key={i}/>
     });
     return (
         <>
