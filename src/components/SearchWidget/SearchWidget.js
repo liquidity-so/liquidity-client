@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton';
 import './SearchWidget.css'
 import Helpers from  '../../utils/Helpers'
 import SineWaveIcon from '../../assets/misc/sineWave-1.png'
+import TokenService from '../../services/token.service';
 
 
 export default class SearchWidget extends Component {
@@ -19,26 +20,42 @@ export default class SearchWidget extends Component {
             loggedIn: false,
             progress: 0,
             status: "",
+            error: null
         }
-        this.mockIntervals = Helpers.runAtRandomIntervals
     }
     setResultsData = (results, summary) => {
-        this.setState({
-            ...this.state,
-            results: results,
-            overview: summary,
-            loading: false
-        })
+        if (!results || !summary) {
+            this.setState({
+                ...this.state,
+                progress: 0,
+                error: 'Unable to simulate exchange data. Please try a different pair',
+                loading: false
+            })
+        }
+        else {
+            this.setState({
+                ...this.state,
+                results: results,
+                overview: summary,
+                loading: false,
+                progress: 0,
+            })
+        }
     }
     createLoadingEffect = () => {
         this.setState({
             ...this.state,
-            loading: true
+            loading: true,
+            error: null,
+            results: null,
+            overview: null,
+            progress: 0
         })
         Helpers.runAtRandomIntervals(this.setProgressBar)
     }
     setProgressBar = () => {
-        let increment = this.state.progress += (2 + Math.random() * 20)
+        let currentState = this.state.progress
+        let increment = currentState += (2 + Math.random() * 20)
         // If progress bar is at 95, don't increase until pair data is received
         if (increment >= 90) {
             return
@@ -47,42 +64,48 @@ export default class SearchWidget extends Component {
             ...this.state,
             progress: increment
         })
-        console.log(this.state.progress)
 
     }
     setFinishedStatus = async (resultsData) => {
-        console.log('mocking finished status')
         clearInterval(Helpers.runAtRandomIntervals)
-        const results = resultsData.results
-        const summary = resultsData.summary
+        let results;
+        let summary;
+        if (resultsData) {
+            results = resultsData.results
+            summary = resultsData.summary
+        }
         this.setState({
             ...this.state,
             progress: 100
         }, () => {
-            setTimeout(() => {this.setResultsData(results, summary)}, 1000)
+            setTimeout(() => {this.setResultsData(results, summary)}, 500)
         })
     }
 
     componentDidMount() {
-        // TODO: Check login status. Replace with context
+        const authorizedUser = TokenService.getAuthToken();
+        const loginStatus = authorizedUser ? true : false;
+        this.setState({
+            ...this.state,
+            loggedIn: loginStatus
+        })
     }
     render() {
-        // TODO: REFACTOR LOADING TEMPLATE TO A DIFFERENT COMPONENT
         return (
             <>
-            <div class="search-bar-section">
-                <div class="search-results-container sw-wrapper" >
-                    <div class="search-box-title-box">
-                        <img src={SineWaveIcon} loading="lazy" width="48" alt="" class="sine_wave"/>
-                        <div class="find-the-best-price-text">Find the best price</div>
-                        <div class="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
+            <div className={`search-bar-section ${this.props.homepage? "home-search" : ""}`}>
+                <div className="search-results-container sw-wrapper" >
+                    <div className="search-box-title-box">
+                        <img src={SineWaveIcon} loading="lazy" width="48" alt="" className="sine_wave"/>
+                        <div className="find-the-best-price-text">Find the best price</div>
+                        <div className="searchresults_subtitle">Simulate your order across 50+ exchanges.</div>
                     </div>
                     <SearchBar 
                         onSearchFinished ={this.setFinishedStatus} 
                         onSearch={this.createLoadingEffect} 
                         homepage = {this.props.homepage ? true: false}
                     />
-                    <div class={this.state.loading ? 
+                    <div className={this.state.loading ? 
                      "search-results-section sresults-section loading-wrapper"
                     :"search-results-section sresults-section"}>
                     { this.state.overview? 
@@ -93,7 +116,7 @@ export default class SearchWidget extends Component {
                             hidden={true}/>
                         : null
                     } 
-                    <div class={this.state.loading ? 
+                    <div className={this.state.loading ? 
                         "search_results_container sw-container loading-wrapper"
                         : "search_results_container sw-container"}>
                         { this.state.results ? 
@@ -104,13 +127,16 @@ export default class SearchWidget extends Component {
                             :  
                             this.state.loading ? 
                             <>
-                            <LoadingBar progress={this.state.progress} status={"Consolidating exchanges..."}/>
-                            <Skeleton className="sw-skeleton">
-                            </Skeleton> 
+                                <LoadingBar progress={this.state.progress} status={"Consolidating exchanges..."}/>
+                                <Skeleton className="sw-skeleton">
+                                </Skeleton> 
                             </>
                             : null
                         }
-                
+                    {this.state.error ? 
+                    <div className="error-wrapper">
+                        <p>{this.state.error}</p>
+                    </div> : null }
                     </div>
                     { this.state.overview? 
                         <ResultCard data={this.state.overview} />

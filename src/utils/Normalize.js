@@ -1,4 +1,7 @@
 const Normalize = {
+    addDollarSymbol(value) {
+        return `$${value}`; 
+    },
     normalizeDollarAmount(value) {
         if (parseFloat(value)) {
             const floatVal = parseFloat(value)

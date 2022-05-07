@@ -2,3 +2,6 @@
 .hidden {
     opacity: 0;
 }
+.coming-soon-text {
+    color: lightgray
+}

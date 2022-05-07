@@ -1,9 +1,9 @@
 import React, {Component, createRef} from 'react';
 import AccordionSearchList from '../AccordionSearchList/AccordionSearchList';
 import LiquidityService from '../../services/liquidity.service';
-import TokenAutocomplete from '../../utils/TokenAutocomplete';
 
 import "./SearchBar.css"
+import TokenService from '../../services/token.service';
 
 export default class SearchBar extends Component{
   constructor(props) {
@@ -13,10 +13,8 @@ export default class SearchBar extends Component{
       matchData1: [],
       currentInput0: "",
       currentInput1: "",
-      selectedPair0: null,
-      selectedPair1: null,
       orderSize: null,
-      validQuery: false
+      validQuery: false,
     }
     this.pair0 = createRef();;
     this.pair1 = createRef();;
@@ -42,10 +40,9 @@ export default class SearchBar extends Component{
       this.setCurrentInput("", pairIndex)
       return 
     }
-    const matchData = await TokenAutocomplete(input)
+    // const matchData = await TokenAutocomplete(input)
+    const matchData = await this.LiquidityApi.autoFill(input);
     this.setMatches(matchData, target)
- 
-    return
   }
 
   setMatches = (data, target) => {
@@ -62,11 +59,10 @@ export default class SearchBar extends Component{
     })
   }
   setSelectedPair = (data, pairIndex) => {
-    alert(data)
-    const selectedPair = (pairIndex === 0) ? "currentInput0" : (pairIndex === 1) ? "currentInput1" : null
+    const currentInput = (pairIndex === 0) ? "currentInput0" : (pairIndex === 1) ? "currentInput1" : null;
     this.setState({
       ...this.state,
-      [selectedPair]: data
+      [currentInput]: data
     }, () => {
       this.validateInputs()
     })
@@ -84,6 +80,7 @@ export default class SearchBar extends Component{
  
   }
   validateInputs = () => {
+    // TODO:
     // Order size must be an int
     // Pairs must be selected
     // Pairs must be valid
@@ -92,32 +89,35 @@ export default class SearchBar extends Component{
       ...this.state,
       validQuery: true
     })
-    console.log(this.state.validQuery)
   }
 
-  handleSubmitLiquidityQuery = async (pair1, pair2, size, type) => {
+  handleSubmitLiquidityQuery = async (type) => {
     // Replace with auth context token
-    const token = null
+    const coin1 = this.state.currentInput0;
+    const coin2 = this.state.currentInput1;
+    const orderSize = this.state.orderSize;
+    const auth = TokenService.getAuthToken()
+    const token = auth ? auth : null;
     this.props.onSearch();
-    const results = await this.LiquidityApi.getExchangeData(pair1, pair2, size, type, token)
-    console.log(results)
+    const results = await this.LiquidityApi.simulateExchange(coin1, coin2, orderSize, type, token)
+    
     this.props.onSearchFinished(results);
   }
 
   render() {
       return (
         <>
-          <div class={`search-bar ${this.props.homepage? "home" : ""}`}>
-            <div class="accorion-wrappa">
+          <div className={`search-bar ${this.props.homepage? "home" : ""}`}>
+            <div className="accorion-wrappa">
               <input 
                 type="text" 
                 name="pair-0" 
-                class="search-box-input-field" 
+                className="search-box-input-field" 
                 placeholder="Crypto Pair 1" 
                 onChange={(input) => this.handleUserSearch(input.target.value, 0)} 
                 ref={this.pair0}
                 value={this.state.currentInput0}
-                autocomplete="off"
+                autoComplete="off"
               />
               {
                 this.state.currentInput0.length && 
@@ -131,16 +131,16 @@ export default class SearchBar extends Component{
                   : null 
               }
             </div>
-            <div class="accorion-wrappa">
+            <div className="accorion-wrappa">
               <input 
                 type="text" 
                 name="pair-1"  
-                class="search-box-input-field" 
+                className="search-box-input-field" 
                 placeholder="Crypto Pair 2" 
                 onChange={(input) => this.handleUserSearch(input.target.value, 1)} 
                 ref={this.pair1}
                 value={this.state.currentInput1}
-                autocomplete="off"
+                autoComplete="off"
               />
               {
                 this.state.currentInput1.length && 
@@ -156,20 +156,20 @@ export default class SearchBar extends Component{
             </div>
             <input 
               type="text" 
-              class="search-box-input-field" 
+              className="search-box-input-field" 
               placeholder="Order Size" 
               name="order-size" 
               onChange={(e) => this.setOrderSize(e.target.value)}
               
             />
-            <div class="div-block-138">
+            <div className="div-block-138">
               <button 
-                onClick={() => this.handleSubmitLiquidityQuery()} 
+                onClick={() => this.handleSubmitLiquidityQuery('buy')} 
                 disabled={!!!this.state.validQuery} 
                 className="search-box-button w-button">
                   Buy</button>
               <button 
-                onClick={() => this.handleSubmitLiquidityQuery()} 
+                onClick={() => this.handleSubmitLiquidityQuery('sell')} 
                 disabled={!!!this.state.validQuery} 
                 className="search-box-button sell w-button">
                   Sell</button>

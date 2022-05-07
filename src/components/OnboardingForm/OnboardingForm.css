@@ -1,0 +1,12 @@
+.onboard-status-block {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    color: red;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+    line-height: normal;
+    margin: 1em 0;
+}

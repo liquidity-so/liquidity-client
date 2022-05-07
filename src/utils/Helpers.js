@@ -1,10 +1,8 @@
 const Helpers = {
     runAtRandomIntervals(callback, maxInterval){
-        console.log('Running!')
         // This will run a callback function based on maximum seconds specified
         // Suggested value for maxInterval is 2000.
         let interval = maxInterval? maxInterval : 2000;
-        console.log(interval)
         setInterval(callback, 150 + Math.random() * interval);
     },
     async createDelay(ms){
